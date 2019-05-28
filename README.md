@@ -86,5 +86,5 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
 * Fluxos:
 
 * Tabelas:
-  https://github.com/rogerssantos/TAP-ProjetoFinal/blob/master/bd/script_projeto.sql
+  [Script das tabelas](https://github.com/rogerssantos/TAP-ProjetoFinal/blob/master/bd/script_projeto.sql)
 * Regras:
