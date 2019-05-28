@@ -54,7 +54,7 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
   - Cadastro do Professor:
     - Nome;
     - Idade;
-    - Qual materia leciona; e
+    - Quais materias leciona; e
     - Login e senha.
   
   - Cadastro da Materia:
