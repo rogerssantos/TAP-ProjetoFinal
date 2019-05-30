@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="apProfessor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.ProfessorController">
+   <children>
+      <VBox>
+         <children>
+            <Label text="Tela do Professor" />
+            <HBox>
+               <children>
+                  <Label text="Nome" />
+                  <TextField fx:id="txtNome" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Login" />
+                  <TextField fx:id="txtLogin" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Senha" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Button mnemonicParsing="false" text="Adicionar" />
+                  <Button mnemonicParsing="false" text="Cancelar" />
+               </children>
+            </HBox>
+            <TableView fx:id="tblProfessor" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="colNome" prefWidth="108.0" text="Nome" />
+                <TableColumn fx:id="colLogin" prefWidth="91.0" text="Login" />
+              </columns>
+            </TableView>
+            <Button mnemonicParsing="false" onAction="#loadInicio" text="Sair" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
