@@ -26,13 +26,13 @@ public class PrincipalController {
 	
 	@FXML
 	private void loadTelaProfessor(ActionEvent event) throws IOException {
-		AnchorPane pane = FXMLLoader.load(getClass().getResource("Professor.fxml"));
+		AnchorPane pane = FXMLLoader.load(getClass().getResource("CadProfessor.fxml"));
 		apRoot.getChildren().setAll(pane);
 	}
 	
 	@FXML
 	private void loadTelaConfiguracao(ActionEvent event) throws IOException {
-		AnchorPane pane = FXMLLoader.load(getClass().getResource("Configuracao.fxml"));
+		AnchorPane pane = FXMLLoader.load(getClass().getResource("CadConfiguracao.fxml"));
 		apRoot.getChildren().setAll(pane);
 	}
 	

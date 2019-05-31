@@ -3,7 +3,7 @@ package principal;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import dao.ProfessorDAO;
+import dao.MateriaDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,37 +14,36 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import model.Professor;
+import model.Materia;
+import util.ConexaoDb;
+import util.Constants;
 
-public class ProfessorController {
+public class CadMateriaController {
 	
-	@FXML private AnchorPane apProfessor;
+	@FXML private AnchorPane apMateria;
 	@FXML TextField txtNome;
-	@FXML TextField txtLogin;
-	@FXML TextField txtFiltro;
 	@FXML CheckBox ckInativar;
 	@FXML Button btAcao;
 	@FXML Button btCancelar;
-	@FXML TableView<Professor> tblProfessor;
-	@FXML TableColumn<Professor, String> colNome;
-	@FXML TableColumn<Professor, String> colLogin;
+	@FXML TableView<Materia> tblMateria;
+	@FXML TableColumn<Materia, String> colNome;
 	
-	private ArrayList<Professor> lista;
-	private ProfessorDAO dao = new ProfessorDAO();
+	private ArrayList<Materia> lista;
+	private MateriaDAO dao = new MateriaDAO();
 	
 	@FXML
 	public void loadInicio(ActionEvent event) throws IOException{
 		AnchorPane pane = FXMLLoader.load(getClass().getResource("Principal.fxml"));
-		apProfessor.getChildren().setAll(pane);
+		apMateria.getChildren().setAll(pane);
 	}
 	
 	@FXML
 	public void initialize() {
+		Constants.conn = ConexaoDb.conectaBd();
 		//btAcao.setText("Novo");
 		colNome.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
-		colLogin.setCellValueFactory(cellData -> cellData.getValue().loginProperty());
 		lista = dao.listaTudo();
-		tblProfessor.setItems(FXCollections.observableArrayList(lista));
+		tblMateria.setItems(FXCollections.observableArrayList(lista));
 	}
 
 	

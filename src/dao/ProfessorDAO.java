@@ -3,7 +3,6 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
 import model.Professor;
 import util.Constants;
 
@@ -13,7 +12,6 @@ public class ProfessorDAO {
 		ArrayList<Professor> professores = new ArrayList<Professor>();
 		String sql = "select nmprofessor, dslogin from tbprofessor where flativo = 'S'";
 		try{
-			System.out.println(sql);
 			PreparedStatement ps = Constants.conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
@@ -27,5 +25,5 @@ public class ProfessorDAO {
 		}
 		return professores;
 	}
-
+	
 }
