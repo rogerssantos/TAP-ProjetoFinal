@@ -17,6 +17,4 @@ public class JogarController {
 		apJogar.getChildren().setAll(pane);
 	}
 	
-	//teste
-	
 }
