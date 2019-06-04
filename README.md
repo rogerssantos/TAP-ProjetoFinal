@@ -15,7 +15,7 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
   - (3) Cadastro das questões;
   - (4) Cadastro das alternativas e repostas;
   - (5) Cadastro da pontuação de cada pergunta;
-  - (6) Cadastro do aluno;
+  - (6) Pedir nome do aluno;
   - (7) Selecionar qual materia jogar;
   - (8) Mostrar a pergunta e depois de um tempo mostrar as alternativas; e
   - (9) Ao finalizar o jogo mostrar pontuação.
