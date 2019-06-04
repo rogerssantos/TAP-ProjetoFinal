@@ -56,22 +56,22 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
     - Perguntas; e
     - Respostas.
     
-  - Matérias:
+  - Matérias (TabPane da PrincipalAdmin.fxml):
     - TextField para o nome da matéria; e
     - TableView para mostrar as matérias já cadastradas.
   
-  - Professores:
+  - Professores (TabPane da PrincipalAdmin.fxml):
     - TextField para o nome do professor;
     - ComboBox para relacionar o professor com a matéria; e
     - TableView para mostrar os professores já cadastradas.
   
-  - Perguntas:
+  - Perguntas (TabPane da PrincipalAdmin.fxml):
     - ComboBox para escolher o professor;
     - ComboBox para escolher a materia;
     - Text Field para a pergunta;
     - ImgView caso optar de colocar uma imagem.
   
-  - Respostas:
+  - Respostas (TabPane da PrincipalAdmin.fxml):
     - ComboBox para escolher o professor;
     - ComboBox para escolher a materia;
     - ComboBox para escolher qual pergunta;
