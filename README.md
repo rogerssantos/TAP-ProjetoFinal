@@ -45,11 +45,6 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
     - Configurações; e
     - Sair.
   
-  - Configurações Login (LoginAdmin.fxml e LoginAdminController.java):
-    - Nome;
-    - Idade; e
-    - Serie/Turma.
-  
   - Configurações (PrincipalAdmin.fxml e PrincipalAdminController.java):
     - Matérias;
     - Professores;
