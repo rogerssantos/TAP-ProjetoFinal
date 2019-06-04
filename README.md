@@ -15,7 +15,7 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
   - (3) Cadastro das questões;
   - (4) Cadastro das alternativas e repostas;
   - (5) Cadastro da pontuação de cada pergunta;
-  - (6) Cadastro do aluno;
+  - (6) Pedir nome do aluno;
   - (7) Selecionar qual materia jogar;
   - (8) Mostrar a pergunta e depois de um tempo mostrar as alternativas; e
   - (9) Ao finalizar o jogo mostrar pontuação.
@@ -39,37 +39,39 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
 
 * Telas:
 
-  - Inicial:
-    - Jogar:
-    - Alunos:
-    - Professores:
-    - Criação e Ajustes:
-    - Configurações:
+  - Inicial (Principal.xml e PrincipalController.java):
+    - Jogar;
+    - Notas;
+    - Configurações; e
+    - Sair.
   
-  - Cadastro do Aluno:
-    - Nome;
-    - Idade; e
-    - Serie/Turma.
+  - Configurações (PrincipalAdmin.fxml e PrincipalAdminController.java):
+    - Matérias;
+    - Professores;
+    - Perguntas; e
+    - Respostas.
+    
+  - Matérias (TabPane da PrincipalAdmin.fxml):
+    - TextField para o nome da matéria; e
+    - TableView para mostrar as matérias já cadastradas.
   
-  - Cadastro do Professor:
-    - Nome;
-    - Idade;
-    - Quais materias leciona; e
-    - Login e senha.
+  - Professores (TabPane da PrincipalAdmin.fxml):
+    - TextField para o nome do professor;
+    - ComboBox para relacionar o professor com a matéria; e
+    - TableView para mostrar os professores já cadastradas.
   
-  - Cadastro da Materia:
-    - Nome.
+  - Perguntas (TabPane da PrincipalAdmin.fxml):
+    - ComboBox para escolher o professor;
+    - ComboBox para escolher a materia;
+    - Text Field para a pergunta;
+    - ImgView caso optar de colocar uma imagem.
   
-  - Cadastro das Perguntas:
-    - Texto; e
-    - Imagens.
-  
-  - Cadastro das Questões:
-    - Texto.
-  
-  - Cadastro das Alternativas e Respostas:
-    - Frase ou Imagem; e
-    - Qual é a correta.
+  - Respostas (TabPane da PrincipalAdmin.fxml):
+    - ComboBox para escolher o professor;
+    - ComboBox para escolher a materia;
+    - ComboBox para escolher qual pergunta;
+    - 3 TexField para 3 perguntas; e
+    - CheckBox do lado de cada TextField para a reposta correta.
   
   - Cadastro das Configurações no Arquivo conf.properties:
     - Mostrar as configurações do arquivo.
