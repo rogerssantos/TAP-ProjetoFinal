@@ -39,37 +39,44 @@ Realizar um aplicativo no qual o professor de determinada materia possua o contr
 
 * Telas:
 
-  - Inicial:
-    - Jogar:
-    - Alunos:
-    - Professores:
-    - Criação e Ajustes:
-    - Configurações:
+  - Inicial (Principal.xml e PrincipalController.java):
+    - Jogar;
+    - Notas;
+    - Configurações; e
+    - Sair.
   
-  - Cadastro do Aluno:
+  - Configurações Login (LoginAdmin.fxml e LoginAdminController.java):
     - Nome;
     - Idade; e
     - Serie/Turma.
   
-  - Cadastro do Professor:
-    - Nome;
-    - Idade;
-    - Quais materias leciona; e
-    - Login e senha.
+  - Configurações (PrincipalAdmin.fxml e PrincipalAdminController.java):
+    - Matérias;
+    - Professores;
+    - Perguntas; e
+    - Respostas.
+    
+  - Matérias:
+    - TextField para o nome da matéria; e
+    - TableView para mostrar as matérias já cadastradas.
   
-  - Cadastro da Materia:
-    - Nome.
+  - Professores:
+    - TextField para o nome do professor;
+    - ComboBox para relacionar o professor com a matéria; e
+    - TableView para mostrar os professores já cadastradas.
   
-  - Cadastro das Perguntas:
-    - Texto; e
-    - Imagens.
+  - Perguntas:
+    - ComboBox para escolher o professor;
+    - ComboBox para escolher a materia;
+    - Text Field para a pergunta;
+    - ImgView caso optar de colocar uma imagem.
   
-  - Cadastro das Questões:
-    - Texto.
-  
-  - Cadastro das Alternativas e Respostas:
-    - Frase ou Imagem; e
-    - Qual é a correta.
+  - Respostas:
+    - ComboBox para escolher o professor;
+    - ComboBox para escolher a materia;
+    - ComboBox para escolher qual pergunta;
+    - 3 TexField para 3 perguntas; e
+    - CheckBox do lado de cada TextField para a reposta correta.
   
   - Cadastro das Configurações no Arquivo conf.properties:
     - Mostrar as configurações do arquivo.
