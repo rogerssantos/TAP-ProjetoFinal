@@ -2,22 +2,24 @@ package principal;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class PrincipalController {
 	
 	@FXML AnchorPane apRoot;
-	@FXML Button btEntrar;
+	@FXML Button btJogar;
+	@FXML Button btNotas;
+	@FXML Button btConfiguracoes;
 	@FXML Button btSair;
-	@FXML TextField txtUsuario;
-	@FXML PasswordField txtSenha;
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		
@@ -29,15 +31,12 @@ public class PrincipalController {
 	}
 	
 	@FXML
-	public void controlaMudancaDeTelaEntreUsuarios(ActionEvent event) throws IOException {
-		if (txtUsuario.getText().equals("aluno") && txtSenha.getText().equals("aluno")) {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("PrincipalAluno.fxml"));
-			apRoot.getChildren().setAll(pane);
-		}
-		if (txtUsuario.getText().equals("admin") && txtSenha.getText().equals("admin")){
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("PrincipalAdmin.fxml"));
-			apRoot.getChildren().setAll(pane);
-		}
+	public void telaDeConfiguracoes(ActionEvent event) throws IOException {
+		Parent telaParent = FXMLLoader.load(getClass().getResource("LoginAdmin.fxml"));
+		Scene telaScene = new Scene(telaParent);
+		Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		telaStage.setScene(telaScene);
+		telaStage.show();
 	}
 	
 }
