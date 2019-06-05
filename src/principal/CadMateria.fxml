@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,33 +15,61 @@
    <children>
       <VBox>
          <children>
-            <Label text="Cadastro de Materias" />
+            <Label text="Cadastro de Materias">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="51.0" right="15.0" top="15.0" />
+               </VBox.margin>
+            </Label>
             <HBox>
                <children>
                   <Label text="Nome" />
                   <TextField fx:id="txtNome" />
                </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </HBox>
-            <HBox />
+            <CheckBox fx:id="ckInativar" mnemonicParsing="false" text="Ativo" />
+            <HBox>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Button fx:id="btAcao" mnemonicParsing="false" onAction="#btAcao" text="Novo" />
+                  <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#btCancelar" text="Cancelar">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             <HBox>
                <children>
                   <Label text="Filtro" />
-                  <PasswordField />
+                  <TextField fx:id="txtFiltro" onKeyPressed="#filtrarMateria">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+               </padding>
             </HBox>
-            <HBox>
-               <children>
-                  <Button mnemonicParsing="false" text="Adicionar" />
-                  <Button fx:id="btCancelar" mnemonicParsing="false" text="Cancelar" />
-               </children>
-            </HBox>
-            <TableView fx:id="tblMateria" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tblMateria" onMouseClicked="#clickLinha" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="colNome" prefWidth="194.0" text="Materia" />
+                  <TableColumn fx:id="colCdMateria" prefWidth="194.0" text="Código" visible="false" />
+                <TableColumn fx:id="colNmMateria" prefWidth="194.0" text="Materia" />
               </columns>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </TableView>
             <Button mnemonicParsing="false" onAction="#loadInicio" text="Sair" />
          </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
       </VBox>
    </children>
 </AnchorPane>

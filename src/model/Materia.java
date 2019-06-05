@@ -6,49 +6,49 @@ import javafx.beans.property.StringProperty;
 
 public class Materia {
 	
-	private SimpleIntegerProperty id = new SimpleIntegerProperty(0);
-	private StringProperty nome = new SimpleStringProperty("");
-	private StringProperty status = new SimpleStringProperty("");
+	private SimpleIntegerProperty cdMateria = new SimpleIntegerProperty(0);
+	private StringProperty nmMateria = new SimpleStringProperty("");
+	private StringProperty flAtivo = new SimpleStringProperty("");
 
 	@Override
 	public String toString() {
-		return getId()+" - "+getNome();
+		return getCdMateria()+" - "+getNmMateria();
 	}
 
-	public SimpleIntegerProperty idProperty() {
-		return this.id;
+	public SimpleIntegerProperty cdMateriaProperty() {
+		return this.cdMateria;
 	}
 	
-	public int getId() {
-		return this.idProperty().get();
+	public int getCdMateria() {
+		return this.cdMateriaProperty().get();
 	}
 
-	public void setId(int id) {
-		this.idProperty().set(id);
+	public void setCdMateria(int cdMateria) {
+		this.cdMateriaProperty().set(cdMateria);
 	}
 	
-	public StringProperty nomeProperty() {
-		return this.nome;
+	public StringProperty nmMateriaProperty() {
+		return this.nmMateria;
 	}
 	
-	public String getNome() {
-		return this.nomeProperty().get();
+	public String getNmMateria() {
+		return this.nmMateriaProperty().get();
 	}
 
-	public void setNome(final String nome) {
-		this.nomeProperty().set(nome);
-	}
-	
-	public StringProperty statusProperty() {
-		return this.status;
-	}
-	
-	public String getStatus() {
-		return this.statusProperty().get();
+	public void setNmMateria(final String nmMateria) {
+		this.nmMateriaProperty().set(nmMateria);
 	}
 
-	public void setStatus(final String status) {
-		this.statusProperty().set(status);
+	public StringProperty flAtivoProperty() {
+		return this.flAtivo;
+	}
+	
+	public String getFlAtivo() {
+		return this.flAtivoProperty().get();
+	}
+
+	public void setFlAtivo(final String flAtivo) {
+		this.flAtivoProperty().set(flAtivo);
 	}
 	
 }

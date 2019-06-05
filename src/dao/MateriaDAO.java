@@ -9,10 +9,11 @@ import model.Materia;
 public class MateriaDAO {
 
 	public void inserir(Materia a) {
-		String sql = "insert into tbmateria (materia) values (?)";
+		String sql = "insert into tbmateria (nmmateria, flativo) values (?, ?)";
 		try {
 			PreparedStatement ps = Constants.conn.prepareStatement(sql);
-			ps.setString(1, a.getNome());
+			ps.setString(1, a.getNmMateria());
+			ps.setString(2, "S");
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -27,7 +28,7 @@ public class MateriaDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Materia m = new Materia();
-				m.setNome(rs.getString("nmmateria"));
+				m.setNmMateria(rs.getString("nmmateria"));
 				materias.add(m);
 			}
 		} catch (Exception e) {
@@ -37,12 +38,13 @@ public class MateriaDAO {
 	}
 
 	public void atualizar(Materia a) {
-		String sql = "update tbmateria set nmmateria = ?, status = ? where id = ?";
+		String sql = "update tbmateria set nmmateria = ?, flativo = ? where cdmateria = ?";
 		try {
 			PreparedStatement ps = Constants.conn.prepareStatement(sql);
-			ps.setString(1, a.getNome());
-			ps.setString(2, a.getStatus());
-			ps.setInt(3, a.getId());
+			ps.setString(1, a.getNmMateria());
+			ps.setString(2, a.getFlAtivo());
+			System.out.println(a.getCdMateria());
+			ps.setInt(3, a.getCdMateria());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,14 +53,14 @@ public class MateriaDAO {
 
 	public ArrayList<Materia> listaFiltrado(String filtro) {
 		ArrayList<Materia> materias = new ArrayList<Materia>();
-		String sql = "select nmmateria from tbmateria where status = 'A' and nmmateria like ?";
+		String sql = "select nmmateria from tbmateria where flativo = 'S' and nmmateria like ?";
 		try {
 			PreparedStatement ps = Constants.conn.prepareStatement(sql);
 			ps.setString(1, "%" + filtro + "%");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Materia a = new Materia();
-				a.setNome(rs.getString("nmmateria"));
+				a.setNmMateria(rs.getString("nmmateria"));
 				materias.add(a);
 			}
 		} catch (Exception e) {
