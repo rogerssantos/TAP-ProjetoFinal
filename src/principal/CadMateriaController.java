@@ -8,23 +8,24 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Materia;
 import util.ConexaoDb;
 import util.Constants;
 
 public class CadMateriaController {
 	
-	private final int ACAO_ATUALIZAR = 1;
-	private final int ACAO_NOVO = 2;
-	public int acao;
-	
-	@FXML private AnchorPane apMateria;
 	@FXML TextField txtNome;
 	@FXML TextField txtFiltro;
 	@FXML CheckBox ckInativar;
@@ -32,16 +33,23 @@ public class CadMateriaController {
 	@FXML Button btCancelar;
 	@FXML TableView<Materia> tblMateria;
 	@FXML TableColumn<Materia, String> colNmMateria;
-	@FXML TableColumn<Materia, Integer> colCdMateria; 
 	
-	private ArrayList<Materia> lista;
-	private MateriaDAO dao = new MateriaDAO();
-	private Materia m = new Materia();
+	private ArrayList<Materia> materias = new ArrayList<Materia>();
+	
+	private MateriaDAO materiaDao = new MateriaDAO();
+	private Materia materia = new Materia();
+	
+	private final int ACAO_ATUALIZAR = 1;
+	private final int ACAO_NOVO = 2;
+	public int acao;
 	
 	@FXML
 	public void loadInicio(ActionEvent event) throws IOException{
-		AnchorPane pane = FXMLLoader.load(getClass().getResource("PrincipalAdmin.fxml"));
-		apMateria.getChildren().setAll(pane);
+		Parent telaParent = FXMLLoader.load(getClass().getResource("PrincipalAdmin.fxml"));
+		Scene telaScene = new Scene(telaParent);
+		Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		telaStage.setScene(telaScene);
+		telaStage.show();
 	}
 	
 	@FXML
@@ -49,62 +57,52 @@ public class CadMateriaController {
 		Constants.conn = ConexaoDb.conectaBd();
 		btAcao.setText("Novo");
 		colNmMateria.setCellValueFactory(cellData -> cellData.getValue().nmMateriaProperty());
-		colCdMateria.setCellValueFactory(cellData -> cellData.getValue().cdMateriaProperty().asObject());
-		lista = dao.listaTudo();
-		tblMateria.setItems(FXCollections.observableArrayList(lista));
+		tblMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
 	}
 	
 	@FXML
-	public void filtrarMateria() {
-		if (txtFiltro.getText().equals("")) {
-			lista = dao.listaTudo();
-			tblMateria.setItems(FXCollections.observableArrayList(lista));
-		} else {
-			lista = dao.listaFiltrado(txtFiltro.getText());
-			tblMateria.setItems(FXCollections.observableArrayList(lista));
+	public void inserirAtualizarMateria() {
+		if (validaCadastroMateria()) {
+			Materia m = tela4Materia();
+			if (acao != ACAO_ATUALIZAR) {
+				materiaDao.inserirMateria(m);
+			} else {
+				materiaDao.atualizaMaterias(m);
+				btCancelar.setDisable(true);
+			}
+			limpaTela();
+			materias = materiaDao.listaMaterias();
+			tblMateria.setItems(FXCollections.observableArrayList(materias));
+			btAcao.setText("Novo");
+			acao = ACAO_NOVO;
 		}
 	}
 	
 	@FXML
-	public void btAcao() {
-		System.out.println("Entrou");
-		Materia m = tela4Materia();
-		if (acao != ACAO_ATUALIZAR) {
-			dao.inserir(m);
-		} else {
-			dao.atualizar(m);
-			btCancelar.setDisable(true);
+	public void selecionaRegistroMateria() {
+		materia = tblMateria.getSelectionModel().getSelectedItem();
+		if (materia != null) {
+			btAcao.setText("Atualizar");
+			materia4Tela(materia);
+			acao = ACAO_ATUALIZAR;
 		}
-		limpaTela();
-		lista = dao.listaTudo();
-		tblMateria.setItems(FXCollections.observableArrayList(lista));
-		btAcao.setText("Novo");
-		acao = ACAO_NOVO;
-	}
+    }
 	
 	@FXML
-	public void btCancelar() {
-		System.out.println("Entrou no cancelar");
+	public void cancelarLinhaSelecionada() {
 		limpaTela();
 		ckInativar.setDisable(true);
 		btCancelar.setDisable(true);
 		acao = ACAO_NOVO;
 	}
 	
-	private Materia tela4Materia() {
-		m.setNmMateria(txtNome.getText());
-		if (ckInativar.isSelected()) {
-			m.setFlAtivo("S");
+	@FXML
+	public void filtrarMateria() {
+		if (txtFiltro.getText().equals("")) {
+			tblMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
 		} else {
-			m.setFlAtivo("N");
+			tblMateria.setItems(FXCollections.observableArrayList(materiaDao.filtraMaterias(txtFiltro.getText())));
 		}
-		return m;
-	}
-	
-	private void materia4Tela(Materia m) {
-		txtNome.setText(m.getNmMateria());
-        ckInativar.setDisable(false);
-        btCancelar.setDisable(false);
 	}
 	
 	private void limpaTela() {
@@ -115,16 +113,39 @@ public class CadMateriaController {
 		ckInativar.setSelected(false);
 	}
 	
-	@FXML
-	public void clickLinha() {
-		m = tblMateria.getSelectionModel().getSelectedItem();
-		System.out.println(m.getCdMateria());
-		System.out.println(m.getFlAtivo());
-		if (m != null) {
-			btAcao.setText("Atualizar");
-			materia4Tela(m);
-			acao = ACAO_ATUALIZAR;
+	private boolean validaCadastroMateria() {
+		if (txtNome.getText().equals("")) {
+			mensagemErroValidacao("Nome");
+			return false;
 		}
-    }
+		return true;
+	}
+	
+	private void mensagemErroValidacao(String erro) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setHeaderText("Erro de validacao");
+		alert.setContentText("Erro de validacao no campo: " +erro+"\nPreenchimento obrigatorio");
+		alert.initStyle(StageStyle.UNDECORATED);
+		alert.getDialogPane().setStyle("-fx-border-color: black; -fx-border-width: 3;");
+		alert.show();
+	}
 
+	private Materia tela4Materia() {
+		materia.setNmMateria(txtNome.getText());
+		if (ckInativar.isSelected()) {
+			materia.setFlAtivo("N");
+		} else {
+			materia.setFlAtivo("S");
+		}
+		return materia;
+	}
+	
+	public void materia4Tela(Materia materia) {
+		txtNome.setText(materia.getNmMateria());
+        ckInativar.setDisable(false);
+        btCancelar.setDisable(false);
+        if (materia.getFlAtivo().equals("S")) {
+        	ckInativar.setSelected(false);
+		}
+	}
 }

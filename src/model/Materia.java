@@ -1,12 +1,13 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Materia {
 	
-	private SimpleIntegerProperty cdMateria = new SimpleIntegerProperty(0);
+	private IntegerProperty cdMateria = new SimpleIntegerProperty(0);
 	private StringProperty nmMateria = new SimpleStringProperty("");
 	private StringProperty flAtivo = new SimpleStringProperty("");
 
@@ -15,39 +16,47 @@ public class Materia {
 		return getCdMateria()+" - "+getNmMateria();
 	}
 
-	public SimpleIntegerProperty cdMateriaProperty() {
+	public final IntegerProperty cdMateriaProperty() {
 		return this.cdMateria;
 	}
 	
-	public int getCdMateria() {
+
+	public final int getCdMateria() {
 		return this.cdMateriaProperty().get();
 	}
+	
 
-	public void setCdMateria(int cdMateria) {
+	public final void setCdMateria(final int cdMateria) {
 		this.cdMateriaProperty().set(cdMateria);
 	}
 	
-	public StringProperty nmMateriaProperty() {
+
+	public final StringProperty nmMateriaProperty() {
 		return this.nmMateria;
 	}
 	
-	public String getNmMateria() {
+
+	public final String getNmMateria() {
 		return this.nmMateriaProperty().get();
 	}
+	
 
-	public void setNmMateria(final String nmMateria) {
+	public final void setNmMateria(final String nmMateria) {
 		this.nmMateriaProperty().set(nmMateria);
 	}
+	
 
-	public StringProperty flAtivoProperty() {
+	public final StringProperty flAtivoProperty() {
 		return this.flAtivo;
 	}
 	
-	public String getFlAtivo() {
+
+	public final String getFlAtivo() {
 		return this.flAtivoProperty().get();
 	}
+	
 
-	public void setFlAtivo(final String flAtivo) {
+	public final void setFlAtivo(final String flAtivo) {
 		this.flAtivoProperty().set(flAtivo);
 	}
 	

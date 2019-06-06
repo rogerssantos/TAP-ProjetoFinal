@@ -11,41 +11,50 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="apMateria" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.CadMateriaController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.CadMateriaController">
    <children>
-      <VBox>
+      <VBox alignment="CENTER">
          <children>
-            <Label text="Cadastro de Materias">
+            <Label alignment="CENTER" text="Cadastro de Materias">
                <VBox.margin>
-                  <Insets bottom="15.0" left="51.0" right="15.0" top="15.0" />
+                  <Insets bottom="15.0" left="30.0" right="15.0" top="15.0" />
                </VBox.margin>
             </Label>
-            <HBox>
+            <HBox alignment="CENTER">
                <children>
-                  <Label text="Nome" />
-                  <TextField fx:id="txtNome" />
+                  <Label text="Nome:">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <TextField fx:id="txtNome">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></TextField>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <CheckBox fx:id="ckInativar" mnemonicParsing="false" text="Ativo" />
-            <HBox>
+            <CheckBox fx:id="ckInativar" mnemonicParsing="false" text="Inativar">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></CheckBox>
+            <HBox alignment="CENTER">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
-                  <Button fx:id="btAcao" mnemonicParsing="false" onAction="#btAcao" text="Novo" />
-                  <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#btCancelar" text="Cancelar">
+                  <Button fx:id="btAcao" mnemonicParsing="false" onAction="#inserirAtualizarMateria" text="Novo" />
+                  <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelarLinhaSelecionada" text="Cancelar">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <HBox>
+            <HBox alignment="CENTER">
                <children>
-                  <Label text="Filtro" />
+                  <Label text="Filtro:" />
                   <TextField fx:id="txtFiltro" onKeyPressed="#filtrarMateria">
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -56,16 +65,21 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </padding>
             </HBox>
-            <TableView fx:id="tblMateria" onMouseClicked="#clickLinha" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tblMateria" onMouseClicked="#selecionaRegistroMateria" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                  <TableColumn fx:id="colCdMateria" prefWidth="194.0" text="Código" visible="false" />
-                <TableColumn fx:id="colNmMateria" prefWidth="194.0" text="Materia" />
+                <TableColumn fx:id="colNmMateria" prefWidth="240.0" text="Materia" />
               </columns>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
             </TableView>
-            <Button mnemonicParsing="false" onAction="#loadInicio" text="Sair" />
+            <Button mnemonicParsing="false" onAction="#loadInicio" text="Voltar">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></Button>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -3,32 +3,36 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import util.Constants;
+
 import model.Materia;
+import util.Constants;
+
 
 public class MateriaDAO {
 
-	public void inserir(Materia a) {
+	public void inserirMateria(Materia a) {
 		String sql = "insert into tbmateria (nmmateria, flativo) values (?, ?)";
 		try {
 			PreparedStatement ps = Constants.conn.prepareStatement(sql);
 			ps.setString(1, a.getNmMateria());
-			ps.setString(2, "S");
+			ps.setString(2, a.getFlAtivo());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public ArrayList<Materia> listaTudo() {
+	public ArrayList<Materia> listaMaterias() {
 		ArrayList<Materia> materias = new ArrayList<Materia>();
-		String sql = "select nmmateria from tbmateria where flativo = 'S'";
+		String sql = "select cdmateria, nmmateria, flativo from tbmateria where flativo = 'S'";
 		try {
 			PreparedStatement ps = Constants.conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Materia m = new Materia();
+				m.setCdMateria(rs.getInt("cdmateria"));
 				m.setNmMateria(rs.getString("nmmateria"));
+				m.setFlAtivo(rs.getString("flativo"));
 				materias.add(m);
 			}
 		} catch (Exception e) {
@@ -37,13 +41,12 @@ public class MateriaDAO {
 		return materias;
 	}
 
-	public void atualizar(Materia a) {
+	public void atualizaMaterias(Materia a) {
 		String sql = "update tbmateria set nmmateria = ?, flativo = ? where cdmateria = ?";
 		try {
 			PreparedStatement ps = Constants.conn.prepareStatement(sql);
 			ps.setString(1, a.getNmMateria());
 			ps.setString(2, a.getFlAtivo());
-			System.out.println(a.getCdMateria());
 			ps.setInt(3, a.getCdMateria());
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -51,7 +54,7 @@ public class MateriaDAO {
 		}
 	}
 
-	public ArrayList<Materia> listaFiltrado(String filtro) {
+	public ArrayList<Materia> filtraMaterias(String filtro) {
 		ArrayList<Materia> materias = new ArrayList<Materia>();
 		String sql = "select nmmateria from tbmateria where flativo = 'S' and nmmateria like ?";
 		try {
