@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.Materia;
-import util.Constants;
+import util.ConexaoDb;
 
 
 public class MateriaDAO {
@@ -13,7 +13,7 @@ public class MateriaDAO {
 	public void inserirMateria(Materia a) {
 		String sql = "insert into tbmateria (nmmateria, flativo) values (?, ?)";
 		try {
-			PreparedStatement ps = Constants.conn.prepareStatement(sql);
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ps.setString(1, a.getNmMateria());
 			ps.setString(2, a.getFlAtivo());
 			ps.executeUpdate();
@@ -26,7 +26,7 @@ public class MateriaDAO {
 		ArrayList<Materia> materias = new ArrayList<Materia>();
 		String sql = "select cdmateria, nmmateria, flativo from tbmateria where flativo = 'S'";
 		try {
-			PreparedStatement ps = Constants.conn.prepareStatement(sql);
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Materia m = new Materia();
@@ -44,7 +44,7 @@ public class MateriaDAO {
 	public void atualizaMaterias(Materia a) {
 		String sql = "update tbmateria set nmmateria = ?, flativo = ? where cdmateria = ?";
 		try {
-			PreparedStatement ps = Constants.conn.prepareStatement(sql);
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ps.setString(1, a.getNmMateria());
 			ps.setString(2, a.getFlAtivo());
 			ps.setInt(3, a.getCdMateria());
@@ -58,7 +58,7 @@ public class MateriaDAO {
 		ArrayList<Materia> materias = new ArrayList<Materia>();
 		String sql = "select nmmateria from tbmateria where flativo = 'S' and nmmateria like ?";
 		try {
-			PreparedStatement ps = Constants.conn.prepareStatement(sql);
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ps.setString(1, "%" + filtro + "%");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {

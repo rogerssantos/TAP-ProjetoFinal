@@ -21,8 +21,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Materia;
-import util.ConexaoDb;
-import util.Constants;
 
 public class CadMateriaController {
 	
@@ -54,7 +52,6 @@ public class CadMateriaController {
 	
 	@FXML
 	public void initialize() {
-		Constants.conn = ConexaoDb.conectaBd();
 		btAcao.setText("Novo");
 		colNmMateria.setCellValueFactory(cellData -> cellData.getValue().nmMateriaProperty());
 		tblMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));

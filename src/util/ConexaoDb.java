@@ -6,7 +6,9 @@ import java.sql.DriverManager;
 
 public class ConexaoDb {
 	
-	public static Connection conectaBd(){
+	private static Connection conn;
+	
+	private static Connection conectaBd(){
 		Connection conn = null;
 		try{
 			File f = new File("bd/projeto_final.sqlite");
@@ -20,4 +22,10 @@ public class ConexaoDb {
 		return conn;
 	}
 
+	public static Connection getInstance() {
+		if (conn == null) {
+			conn = conectaBd();
+		}
+		return conn;
+	}
 }
