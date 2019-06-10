@@ -55,7 +55,7 @@
             <HBox alignment="CENTER">
                <children>
                   <Label text="Filtro:" />
-                  <TextField fx:id="txtFiltro" onKeyPressed="#filtrarMateria">
+                  <TextField fx:id="txtFiltro" onKeyReleased="#filtrarMateria">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

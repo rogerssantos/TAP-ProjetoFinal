@@ -13,10 +13,12 @@ import javafx.stage.StageStyle;
 import model.Materia;
 import model.Questao;
 
-public class cadQuestaoController {
+public class CadRespostaController {
 
-	@FXML ComboBox<Materia> cbMateria;
-	@FXML TextField txtDescricaoQuestao;
+	@FXML TextField txtResposta1;
+	@FXML TextField txtResposta2;
+	@FXML TextField txtResposta3;
+	@FXML TextField txtResposta4;
 	@FXML TextArea txtQuestao;
 	
 	private MateriaDAO materiaDao = new MateriaDAO();
@@ -25,23 +27,18 @@ public class cadQuestaoController {
 	
 	@FXML
 	public void initialize() {
-		preencheComboBoxMateria();
 	}
 	
 	@FXML
-	public void inserirQuestao() {
-		if(validaCadastroQuestao()) {
+	public void inserirResposta() {
+		if(validaCadastroResposta()) {
 			Questao q = tela4questao();
 			questaoDao.inserirQuestao(q);
 			limpaTela();
 		}
 	}
 	
-	public void preencheComboBoxMateria() {
-		cbMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
-	}
-	
-	private Questao tela4questao() {
+	private Questao tela4resposta() {
 		questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
 		questao.setDescricaoQuestao(txtDescricaoQuestao.getText());
 		questao.setTextoQuestao(txtQuestao.getText());
@@ -54,17 +51,21 @@ public class cadQuestaoController {
 		txtQuestao.setText("");
 	}
 	
-	private boolean validaCadastroQuestao() {
-		if(cbMateria.getSelectionModel().isEmpty()) {
-			mensagemErroValidacao("Matérias");
+	private boolean validaCadastroResposta() {
+		if(txtResposta1.getText().equals("")) {
+			mensagemErroValidacao("Resposta 1");
 			return false;
 		}
-		if(txtDescricaoQuestao.getText().equals("")) {
-			mensagemErroValidacao("Descrição da pergunta");
+		if(txtResposta2.getText().equals("")) {
+			mensagemErroValidacao("Resposta 2");
 			return false;
 		}
-		if(txtQuestao.getText().equals("")) {
-			mensagemErroValidacao("Texto da pergunta");
+		if(txtResposta3.getText().equals("")) {
+			mensagemErroValidacao("Resposta 3");
+			return false;
+		}
+		if(txtResposta4.getText().equals("")) {
+			mensagemErroValidacao("Resposta 4");
 			return false;
 		}
 		return true;
@@ -78,4 +79,5 @@ public class cadQuestaoController {
 		alert.getDialogPane().setStyle("-fx-border-color: black; -fx-border-width: 3;");
 		alert.show();
 	}
+	
 }
