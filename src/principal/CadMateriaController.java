@@ -95,10 +95,10 @@ public class CadMateriaController {
 	
 	@FXML
 	public void filtrarMateria() {
-		if (txtFiltro.getText().equals("")) {
-			tblMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
-		} else {
+		if (!txtFiltro.getText().equals("")) {
 			tblMateria.setItems(FXCollections.observableArrayList(materiaDao.filtraMaterias(txtFiltro.getText())));
+		} else {
+			tblMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
 		}
 	}
 	

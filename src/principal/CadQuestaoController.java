@@ -4,16 +4,21 @@ import dao.MateriaDAO;
 import dao.QuestaoDAO;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Materia;
 import model.Questao;
 
-public class cadQuestaoController {
+public class CadQuestaoController {
 
 	@FXML ComboBox<Materia> cbMateria;
 	@FXML TextField txtDescricaoQuestao;
@@ -78,4 +83,5 @@ public class cadQuestaoController {
 		alert.getDialogPane().setStyle("-fx-border-color: black; -fx-border-width: 3;");
 		alert.show();
 	}
+
 }
