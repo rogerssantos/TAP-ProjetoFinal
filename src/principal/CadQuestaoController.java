@@ -1,19 +1,21 @@
 package principal;
 
+import java.io.IOException;
+
 import dao.MateriaDAO;
 import dao.QuestaoDAO;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Materia;
 import model.Questao;
@@ -23,6 +25,7 @@ public class CadQuestaoController {
 	@FXML ComboBox<Materia> cbMateria;
 	@FXML TextField txtDescricaoQuestao;
 	@FXML TextArea txtQuestao;
+	@FXML TabPane pane;
 	
 	private MateriaDAO materiaDao = new MateriaDAO();
 	private QuestaoDAO questaoDao = new QuestaoDAO();
@@ -34,11 +37,10 @@ public class CadQuestaoController {
 	}
 	
 	@FXML
-	public void inserirQuestao() {
+	public void inserirQuestao(ActionEvent event) throws IOException {
 		if(validaCadastroQuestao()) {
 			Questao q = tela4questao();
 			questaoDao.inserirQuestao(q);
-			limpaTela();
 		}
 	}
 	
@@ -51,12 +53,6 @@ public class CadQuestaoController {
 		questao.setDescricaoQuestao(txtDescricaoQuestao.getText());
 		questao.setTextoQuestao(txtQuestao.getText());
 		return questao;
-	}
-	
-	private void limpaTela() {
-		cbMateria.getSelectionModel().select(-1);
-		txtDescricaoQuestao.setText("");
-		txtQuestao.setText("");
 	}
 	
 	private boolean validaCadastroQuestao() {
@@ -83,5 +79,4 @@ public class CadQuestaoController {
 		alert.getDialogPane().setStyle("-fx-border-color: black; -fx-border-width: 3;");
 		alert.show();
 	}
-
 }
