@@ -83,20 +83,5 @@ public class CadQuestaoController {
 		alert.getDialogPane().setStyle("-fx-border-color: black; -fx-border-width: 3;");
 		alert.show();
 	}
-	
-	@FXML 
-	public void abreCadResposta(){
-		try {
-				Stage stageJanela1 = new Stage();
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("CadResposta.fxml"));
-				Parent root = loader.load();
-				stageJanela1.setScene(new Scene(root));
-				stageJanela1.initModality(Modality.WINDOW_MODAL);
-				stageJanela1.initStyle(StageStyle.UNDECORATED);
-				stageJanela1.setResizable(false);
-				stageJanela1.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 }

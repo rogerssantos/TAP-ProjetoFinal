@@ -2,6 +2,7 @@ package principal;
 
 import dao.MateriaDAO;
 import dao.QuestaoDAO;
+import dao.RespostaDAO;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -21,8 +22,8 @@ public class CadRespostaController {
 	@FXML TextField txtResposta4;
 	@FXML TextArea txtQuestao;
 	
-	private MateriaDAO materiaDao = new MateriaDAO();
-	private QuestaoDAO questaoDao = new QuestaoDAO();
+	//private RespostaDAO respostaDao = new RespostaDAO();
+	//private RespostaDAO respostaDao = new RespostaDAO();
 	private Questao questao = new Questao();
 	
 	@FXML
@@ -32,22 +33,22 @@ public class CadRespostaController {
 	@FXML
 	public void inserirResposta() {
 		if(validaCadastroResposta()) {
-			Questao q = tela4questao();
-			questaoDao.inserirQuestao(q);
+			//Questao q = tela4questao();
+			//questaoDao.inserirQuestao(q);
 			limpaTela();
 		}
 	}
 	
 	private Questao tela4resposta() {
-		questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
-		questao.setDescricaoQuestao(txtDescricaoQuestao.getText());
+		//questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		//questao.setDescricaoQuestao(txtDescricaoQuestao.getText());
 		questao.setTextoQuestao(txtQuestao.getText());
 		return questao;
 	}
 	
 	private void limpaTela() {
-		cbMateria.getSelectionModel().select(-1);
-		txtDescricaoQuestao.setText("");
+		//cbMateria.getSelectionModel().select(-1);
+		//txtDescricaoQuestao.setText("");
 		txtQuestao.setText("");
 	}
 	
