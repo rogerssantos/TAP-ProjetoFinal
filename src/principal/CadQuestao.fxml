@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,8 +16,14 @@
          <left>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Adicionar Imagem:" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="149.0" text="Escolher Imagem" />
+                  <Label text="Adicionar Imagem:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="149.0" text="Escolher Imagem">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                   <Label text="Descrição da Pergunta:">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
@@ -43,81 +48,20 @@
             </VBox>
          </left>
          <top>
-            <VBox BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Cadastro de perguntas" />
-                  <Label text="Matérias:" />
-                  <ComboBox fx:id="cbMateria" prefHeight="31.0" prefWidth="203.0" />
+                  <Label text="Matérias:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <ComboBox fx:id="cbMateria" prefHeight="6.0" prefWidth="158.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></ComboBox>
                </children>
             </VBox>
          </top>
-         <right>
-            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox />
-                  <Label text="Resposta 1">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextField>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </RadioButton>
-                  <Label text="Resposta 2">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextField>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </RadioButton>
-                  <Label text="Resposta 3">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextField>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </RadioButton>
-                  <Label text="Resposta 4">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextField>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </RadioButton>
-               </children>
-            </VBox>
-         </right>
          <bottom>
             <Button mnemonicParsing="false" onAction="#inserirQuestao" text="Cadastrar Pergunta" BorderPane.alignment="CENTER" />
          </bottom>
