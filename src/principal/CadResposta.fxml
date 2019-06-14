@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="310.0" prefWidth="420.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane prefHeight="310.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -22,7 +21,10 @@
             </Label>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" text="Salvar" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" text="Salvar" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin></Button>
          </bottom>
          <center>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
@@ -38,7 +40,7 @@
                         <ToggleGroup fx:id="resposta" />
                      </toggleGroup>
                      <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </RadioButton>
                   <Label text="Alternativa B">
@@ -49,7 +51,7 @@
                   <TextField />
                   <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$resposta">
                      <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </RadioButton>
                   <Label text="Alternativa C">
@@ -60,7 +62,7 @@
                   <TextField />
                   <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$resposta">
                      <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </RadioButton>
                   <Label text="Alternativa D">
@@ -71,7 +73,7 @@
                   <TextField />
                   <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$resposta">
                      <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </RadioButton>
                </children>

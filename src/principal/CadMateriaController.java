@@ -53,6 +53,7 @@ public class CadMateriaController {
 	@FXML
 	public void initialize() {
 		btAcao.setText("Novo");
+		colNmMateria.setPrefWidth(856);
 		colNmMateria.setCellValueFactory(cellData -> cellData.getValue().nmMateriaProperty());
 		tblMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
 	}

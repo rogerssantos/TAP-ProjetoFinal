@@ -1,6 +1,8 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import model.Questao;
 import util.ConexaoDb;
@@ -20,4 +22,18 @@ public class QuestaoDAO {
 		}
 	}
 	
+	public int buscaMaxQuestao(){
+		int idQuestao = 0;
+		String sql = "select max(cdquestao) as cdquestao from tbquestao";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ResultSet linha = ps.executeQuery();
+			if(linha.next()) {
+				idQuestao = (linha.getInt("cdquestao"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return idQuestao;
+	}
 }

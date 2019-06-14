@@ -67,7 +67,7 @@
             </HBox>
             <TableView fx:id="tblMateria" onMouseClicked="#selecionaRegistroMateria">
               <columns>
-                <TableColumn fx:id="colNmMateria" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="588.0" text="Matérias" />
+                <TableColumn fx:id="colNmMateria" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="433.0" text="Matérias" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" onAction="#loadInicio" text="Voltar">

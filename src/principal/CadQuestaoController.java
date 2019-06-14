@@ -1,18 +1,18 @@
 package principal;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import dao.MateriaDAO;
 import dao.QuestaoDAO;
+import dao.RespostaDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Tab;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -24,12 +24,22 @@ public class CadQuestaoController {
 
 	@FXML ComboBox<Materia> cbMateria;
 	@FXML TextField txtDescricaoQuestao;
+	@FXML TextField txtAlternativaA;
+	@FXML TextField txtAlternativaB;
+	@FXML TextField txtAlternativaC;
+	@FXML TextField txtAlternativaD;
+	@FXML RadioButton rdAlternativaA;
+	@FXML RadioButton rdAlternativaB;
+	@FXML RadioButton rdAlternativaC;
+	@FXML RadioButton rdAlternativaD;
 	@FXML TextArea txtQuestao;
 	@FXML TabPane pane;
 	
 	private MateriaDAO materiaDao = new MateriaDAO();
 	private QuestaoDAO questaoDao = new QuestaoDAO();
+	private RespostaDAO respostaDao = new RespostaDAO();
 	private Questao questao = new Questao();
+	ArrayList<Questao> questoes = new ArrayList<Questao>();
 	
 	@FXML
 	public void initialize() {
@@ -41,6 +51,7 @@ public class CadQuestaoController {
 		if(validaCadastroQuestao()) {
 			Questao q = tela4questao();
 			questaoDao.inserirQuestao(q);
+			iserirRepostas();
 		}
 	}
 	
@@ -78,5 +89,13 @@ public class CadQuestaoController {
 		alert.initStyle(StageStyle.UNDECORATED);
 		alert.getDialogPane().setStyle("-fx-border-color: black; -fx-border-width: 3;");
 		alert.show();
+	}
+	
+	public void iserirRepostas() {
+		int idQuestao = questaoDao.buscaMaxQuestao();
+		respostaDao.inserirRespostas(1, idQuestao, txtAlternativaA.getText(), rdAlternativaA.isSelected() ? "S" : "N");
+		respostaDao.inserirRespostas(2, idQuestao, txtAlternativaB.getText(), rdAlternativaA.isSelected() ? "S" : "N");
+		respostaDao.inserirRespostas(3, idQuestao, txtAlternativaC.getText(), rdAlternativaA.isSelected() ? "S" : "N");
+		respostaDao.inserirRespostas(4, idQuestao, txtAlternativaD.getText(), rdAlternativaA.isSelected() ? "S" : "N");
 	}
 }
