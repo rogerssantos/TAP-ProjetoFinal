@@ -3,7 +3,7 @@ package model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class OpcaoResposta {
+public class Resposta {
 
 	
 	private StringProperty alteranativaA = new SimpleStringProperty("");

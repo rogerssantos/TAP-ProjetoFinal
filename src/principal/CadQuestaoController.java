@@ -52,9 +52,25 @@ public class CadQuestaoController {
 			Questao q = tela4questao();
 			questaoDao.inserirQuestao(q);
 			iserirRepostas();
+			limpaTela();
 		}
 	}
 	
+	private void limpaTela() {
+		txtDescricaoQuestao.setText("");
+		txtQuestao.setText("");
+		txtAlternativaA.setText("");
+		txtAlternativaB.setText("");
+		txtAlternativaC.setText("");
+		txtAlternativaD.setText("");
+		rdAlternativaA.setSelected(false);
+		rdAlternativaB.setSelected(false);
+		rdAlternativaC.setSelected(false);
+		rdAlternativaD.setSelected(false);
+		preencheComboBoxMateria();
+		txtDescricaoQuestao.requestFocus();
+	}
+
 	public void preencheComboBoxMateria() {
 		cbMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
 	}
@@ -79,6 +95,26 @@ public class CadQuestaoController {
 			mensagemErroValidacao("Texto da pergunta");
 			return false;
 		}
+		if(txtAlternativaA.getText().equals("")) {
+			mensagemErroValidacao("Alternativa A");
+			return false;
+		}
+		if(txtAlternativaB.getText().equals("")) {
+			mensagemErroValidacao("Alternativa B");
+			return false;
+		}
+		if(txtAlternativaC.getText().equals("")) {
+			mensagemErroValidacao("Alternativa C");
+			return false;
+		}
+		if(txtAlternativaD.getText().equals("")) {
+			mensagemErroValidacao("Alternativa D");
+			return false;
+		}
+		if (!(rdAlternativaA.isSelected() || rdAlternativaB.isSelected() || rdAlternativaC.isSelected() || rdAlternativaD.isSelected())) {
+			mensagemErroValidacao("Resposta correta não selecionada");
+			return false;
+		}
 		return true;
 	}
 	
@@ -94,8 +130,8 @@ public class CadQuestaoController {
 	public void iserirRepostas() {
 		int idQuestao = questaoDao.buscaMaxQuestao();
 		respostaDao.inserirRespostas(1, idQuestao, txtAlternativaA.getText(), rdAlternativaA.isSelected() ? "S" : "N");
-		respostaDao.inserirRespostas(2, idQuestao, txtAlternativaB.getText(), rdAlternativaA.isSelected() ? "S" : "N");
-		respostaDao.inserirRespostas(3, idQuestao, txtAlternativaC.getText(), rdAlternativaA.isSelected() ? "S" : "N");
-		respostaDao.inserirRespostas(4, idQuestao, txtAlternativaD.getText(), rdAlternativaA.isSelected() ? "S" : "N");
+		respostaDao.inserirRespostas(2, idQuestao, txtAlternativaB.getText(), rdAlternativaB.isSelected() ? "S" : "N");
+		respostaDao.inserirRespostas(3, idQuestao, txtAlternativaC.getText(), rdAlternativaC.isSelected() ? "S" : "N");
+		respostaDao.inserirRespostas(4, idQuestao, txtAlternativaD.getText(), rdAlternativaD.isSelected() ? "S" : "N");
 	}
 }

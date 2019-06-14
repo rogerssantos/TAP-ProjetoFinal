@@ -7,7 +7,7 @@ import util.ConexaoDb;
 public class RespostaDAO {
 
 	public void inserirRespostas(int op, int id, String texto, String fl) {
-		String sql = "insert into tbopcaoresposta (cdopcaoresposta, cdquestao, texto, flcorreto, flativo) values (?, ?, ?, ?, ?)";
+		String sql = "insert into tbresposta (cdresposta, cdquestao, texto, flcorreto, flativo) values (?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ps.setInt(1, op);
