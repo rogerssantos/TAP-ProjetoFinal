@@ -28,7 +28,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="txtAluno">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -42,14 +42,14 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox prefWidth="150.0">
+                        <ComboBox fx:id="cbMateria" prefWidth="150.0">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </ComboBox>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Jogar">
+                  <Button mnemonicParsing="false" onAction="#comecarJogo" text="Jogar">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
