@@ -39,4 +39,12 @@ public class PrincipalController {
 		telaStage.show();
 	}
 	
+	@FXML
+	public void telaDeJogar(ActionEvent event) throws IOException {
+		Parent telaParent = FXMLLoader.load(getClass().getResource("Jogar.fxml"));
+		Scene telaScene = new Scene(telaParent);
+		Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		telaStage.setScene(telaScene);
+		telaStage.show();
+	}
 }

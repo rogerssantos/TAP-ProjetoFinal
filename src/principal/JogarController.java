@@ -1,20 +1,40 @@
 package principal;
 
-import java.io.IOException;
-import javafx.event.ActionEvent;
+import dao.MateriaDAO;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import model.Jogar;
+import model.Materia;
 
 public class JogarController {
 	
-	@FXML
-	private AnchorPane apJogar;
+	@FXML TextField txtAluno;
+	@FXML ComboBox<Materia> cbMateria;
+	
+	private MateriaDAO materiaDao = new MateriaDAO();
+	private Jogar jogar = new Jogar();
 	
 	@FXML
-	public void loadInicio(ActionEvent event) throws IOException{
-		AnchorPane pane = FXMLLoader.load(getClass().getResource("Principal.fxml"));
-		apJogar.getChildren().setAll(pane);
+	public void initialize() {
+		preencheComboBoxMateria();
+	}
+	
+	@FXML
+	public void comecarJogo() {
+		Jogar j = tela4jogar();
+		
+	}
+	
+	public void preencheComboBoxMateria() {
+		cbMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
+	}
+	
+	private Jogar tela4jogar() {
+		jogar.setNmAluno(txtAluno.getText());
+		jogar.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		return jogar;
 	}
 	
 }

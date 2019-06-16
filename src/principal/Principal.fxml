@@ -21,7 +21,7 @@
          <center>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btJogar" mnemonicParsing="false" text="Jogar" />
+                  <Button fx:id="btJogar" mnemonicParsing="false" onAction="#telaDeJogar" text="Jogar" />
                   <Button fx:id="btNotas" mnemonicParsing="false" text="Notas">
                      <VBox.margin>
                         <Insets top="20.0" />
