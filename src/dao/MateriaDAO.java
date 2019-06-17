@@ -72,4 +72,21 @@ public class MateriaDAO {
 		return materias;
 	}
 
+	public Materia buscarPorId(int cdmateria){
+		Materia m = new Materia();
+		String sql = "select cdmateria, nmmateria, flativo from materia where cdmateria = ?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, cdmateria);
+			ResultSet linha = ps.executeQuery();
+			if (linha.next()) {
+				m.setCdMateria(linha.getInt("cdmateria"));
+				m.setNmMateria(linha.getString("nmmateria"));
+				m.setFlAtivo(linha.getString("flativo"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return m;
+	}
 }
