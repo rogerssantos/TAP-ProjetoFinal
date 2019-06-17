@@ -79,6 +79,7 @@ public class CadQuestaoController {
 		questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
 		questao.setDescricaoQuestao(txtDescricaoQuestao.getText());
 		questao.setTextoQuestao(txtQuestao.getText());
+		questao.setFlAtivo("S");
 		return questao;
 	}
 	
