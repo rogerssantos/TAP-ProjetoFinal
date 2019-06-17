@@ -43,7 +43,7 @@ public class JogarController {
 			jogarDao.inserirJogo(j);
 			int qtQuestoes = questaoDao.buscaQuantidadeDeQuestoes(j.getMateria().getCdMateria());
 			if (qtQuestoes > 0) {
-				Parent telaParent = FXMLLoader.load(getClass().getResource("PrincipalAdmin.fxml"));
+				Parent telaParent = FXMLLoader.load(getClass().getResource("JogarResposta.fxml"));
 				Scene telaScene = new Scene(telaParent);
 				Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				telaStage.setScene(telaScene);

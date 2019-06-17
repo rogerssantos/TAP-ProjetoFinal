@@ -57,7 +57,7 @@ public class QuestaoDAO {
 	public ArrayList<Questao> listaQuestoes() {
 		ArrayList<Questao> questoes = new ArrayList<Questao>();
 		MateriaDAO materiaDao = new MateriaDAO();
-		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbmateria where flativo = 'S'";
+		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbquestao where flativo = 'S' order by random () limit 5";
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ResultSet linha = ps.executeQuery();

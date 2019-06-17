@@ -1,6 +1,10 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import model.Resposta;
 import util.ConexaoDb;
 
 
@@ -19,5 +23,21 @@ public class RespostaDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Resposta> listaRespostas() {
+		ArrayList<Resposta> respostas = new ArrayList<Resposta>();
+		String sql = "select cdresposta, cdquestao, texto, flcorreto, flativo from tbmateria where flativo = 'S'";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ResultSet linha = ps.executeQuery();
+			while (linha.next()) {
+				Resposta r = new Resposta();
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return respostas;
 	}
 }
