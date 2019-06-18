@@ -10,32 +10,33 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="497.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="497.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.JogarRespostaController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Questão" />
-                  <TextArea prefHeight="200.0" prefWidth="200.0">
+                  <TextArea fx:id="txtQuestao" prefHeight="200.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Label text="Pergunta">
+                  <Label fx:id="lbDescQuestao" text="Pergunta">
                      <VBox.margin>
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                      </VBox.margin>
                   </Label>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label text="Alterativa A">
+                        <Label fx:id="lbAlternativaA" text="Alterativa A">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <RadioButton mnemonicParsing="false" text="Correta">
+                        <RadioButton fx:id="rdAlternativaA" mnemonicParsing="false" text="Correta">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -47,12 +48,12 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="369.0">
                      <children>
-                        <Label text="Alterativa B">
+                        <Label fx:id="lbAlternativaB" text="Alterativa B">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <RadioButton mnemonicParsing="false" text="Correta" toggleGroup="$correta">
+                        <RadioButton fx:id="rdAlternativaB" mnemonicParsing="false" text="Correta" toggleGroup="$correta">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -61,12 +62,12 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="389.0">
                      <children>
-                        <Label text="Alterativa C">
+                        <Label fx:id="lbAlternativaC" text="Alterativa C">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <RadioButton mnemonicParsing="false" text="Correta" toggleGroup="$correta">
+                        <RadioButton fx:id="rdAlternativaC" mnemonicParsing="false" text="Correta" toggleGroup="$correta">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -75,12 +76,12 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="410.0">
                      <children>
-                        <Label text="Alterativa D">
+                        <Label fx:id="lbAlternativaD" text="Alterativa D">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <RadioButton mnemonicParsing="false" text="Correta" toggleGroup="$correta">
+                        <RadioButton fx:id="rdAlternativaD" mnemonicParsing="false" text="Correta" toggleGroup="$correta">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -91,11 +92,35 @@
             </VBox>
          </center>
          <bottom>
-            <Button mnemonicParsing="false" text="Confirmar" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </BorderPane.margin>
-            </Button>
+            <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="lbResposta">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="TOP_CENTER">
+                     <children>
+                        <Button fx:id="btResponder" mnemonicParsing="false" onAction="#salvarResposta" text="Responder">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btProximo" mnemonicParsing="false" onAction="#proximaQuestao" text="Próxima">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
          </bottom>
       </BorderPane>
    </children>

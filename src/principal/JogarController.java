@@ -41,7 +41,7 @@ public class JogarController {
 		if (validaCadastroJogo()) {
 			Jogar j = tela4jogar();
 			jogarDao.inserirJogo(j);
-			int qtQuestoes = questaoDao.buscaQuantidadeDeQuestoes(j.getMateria().getCdMateria());
+			int qtQuestoes = questaoDao.buscaQuantidadeDeQuestoes(j.getCdMateria());
 			if (qtQuestoes > 0) {
 				Parent telaParent = FXMLLoader.load(getClass().getResource("JogarResposta.fxml"));
 				Scene telaScene = new Scene(telaParent);
@@ -60,7 +60,7 @@ public class JogarController {
 	
 	private Jogar tela4jogar() {
 		jogar.setNmAluno(txtAluno.getText());
-		jogar.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		jogar.setCdMateria(cbMateria.getSelectionModel().getSelectedItem().getCdMateria());
 		return jogar;
 	}
 	

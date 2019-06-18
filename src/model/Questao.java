@@ -7,18 +7,24 @@ import javafx.beans.property.StringProperty;
 
 public class Questao {
 
-	private Materia materia = new Materia();
+	private IntegerProperty cdMateria = new SimpleIntegerProperty(0);
 	private IntegerProperty idQuestao = new SimpleIntegerProperty(0);
 	private StringProperty descricaoQuestao = new SimpleStringProperty("");
 	private StringProperty textoQuestao = new SimpleStringProperty("");
 	private StringProperty flAtivo = new SimpleStringProperty("");
 	
-	public Materia getMateria() {
-		return materia;
+	public final IntegerProperty cdMateriaProperty() {
+		return this.cdMateria;
 	}
-	public void setMateria(Materia materia) {
-		this.materia = materia;
+	
+	public final int getCdMateria() {
+		return this.cdMateriaProperty().get();
 	}
+	
+	public final void setCdMateria(final int cdMateria) {
+		this.cdMateriaProperty().set(cdMateria);
+	}
+	
 	public final IntegerProperty idQuestaoProperty() {
 		return this.idQuestao;
 	}

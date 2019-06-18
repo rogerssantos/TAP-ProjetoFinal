@@ -76,7 +76,7 @@ public class CadQuestaoController {
 	}
 	
 	private Questao tela4questao() {
-		questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		questao.setCdMateria(cbMateria.getSelectionModel().getSelectedItem().getCdMateria());
 		questao.setDescricaoQuestao(txtDescricaoQuestao.getText());
 		questao.setTextoQuestao(txtQuestao.getText());
 		questao.setFlAtivo("S");
