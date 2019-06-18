@@ -1,17 +1,24 @@
 package principal;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import dao.JogarDAO;
 import dao.QuestaoDAO;
 import dao.RespostaDAO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Questao;
 import model.Resposta;
@@ -35,7 +42,7 @@ public class JogarRespostaController {
 	private QuestaoDAO questaoDao = new QuestaoDAO();
 	private JogarDAO jogarDao = new JogarDAO();
 	private RespostaDAO respostaDao = new RespostaDAO();
-	private Questao[] questaoArray = new Questao[5];
+	private Questao[] questaoArray = new Questao[3];
 	private Resposta resposta = new Resposta();
 	ArrayList<Questao> questoes = new ArrayList<Questao>();
 	int countQuestao = 0;
@@ -60,8 +67,6 @@ public class JogarRespostaController {
 			lbAlternativaC.setText(resposta.getAlteranativaC());
 			lbAlternativaD.setText(resposta.getAlteranativaD());
 			habilitaResposta();
-		} else {
-			lbResposta.setText("Não há mais perguntas!");
 		}
 	}
 	
@@ -102,10 +107,20 @@ public class JogarRespostaController {
 		return true;
 	}
 	
-	public void proximaQuestao() {
+	public void proximaQuestao(ActionEvent event) throws IOException {
 		countQuestao++;
-		preencheTela();
-		lbResposta.setText("");
+		if (countQuestao < questaoArray.length) {
+			preencheTela();
+			lbResposta.setText("");
+			System.out.println("QUESTAO "+countQuestao);
+			System.out.println("ARRAY "+questaoArray.length);
+		} else{
+			Parent telaParent = FXMLLoader.load(getClass().getResource("RankingAcertadas.fxml"));
+			Scene telaScene = new Scene(telaParent);
+			Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			telaStage.setScene(telaScene);
+			telaStage.show();
+		}
 	}
 	
 	private void mensagemErroValidacao(String erro) {

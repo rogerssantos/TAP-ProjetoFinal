@@ -2,9 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
-import model.Questao;
 import model.Resposta;
 import util.ConexaoDb;
 

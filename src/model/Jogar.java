@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 public class Jogar {
 
-	private IntegerProperty cdMateria = new SimpleIntegerProperty(0);
+	private Materia materia = new Materia();
 	private StringProperty nmAluno = new SimpleStringProperty("");
 	private IntegerProperty qtAcertadas = new SimpleIntegerProperty(0);
 	
@@ -23,18 +23,6 @@ public class Jogar {
 		this.nmAlunoProperty().set(nmAluno);
 	}
 
-	public final IntegerProperty cdMateriaProperty() {
-		return this.cdMateria;
-	}
-
-	public final int getCdMateria() {
-		return this.cdMateriaProperty().get();
-	}
-	
-	public final void setCdMateria(final int cdMateria) {
-		this.cdMateriaProperty().set(cdMateria);
-	}
-
 	public final IntegerProperty qtAcertadasProperty() {
 		return this.qtAcertadas;
 	}
@@ -45,6 +33,14 @@ public class Jogar {
 	
 	public final void setQtAcertadas(final int qtAcertadas) {
 		this.qtAcertadasProperty().set(qtAcertadas);
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
 	}
 	
 }

@@ -74,7 +74,7 @@ public class MateriaDAO {
 
 	public Materia buscarPorId(int cdmateria){
 		Materia m = new Materia();
-		String sql = "select cdmateria, nmmateria, flativo from materia where cdmateria = ?";
+		String sql = "select cdmateria, nmmateria, flativo from tbmateria where cdmateria = ?";
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ps.setInt(1, cdmateria);

@@ -13,7 +13,7 @@ public class JogarDAO {
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ps.setString(1, j.getNmAluno());
-			ps.setInt(2, j.getCdMateria());
+			ps.setInt(2, j.getMateria().getCdMateria());
 			ps.setInt(3, 0);
 			ps.executeUpdate();
 		} catch (Exception e) {

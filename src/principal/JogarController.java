@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 import model.Jogar;
 import model.Materia;
 
+
 public class JogarController {
 	
 	@FXML TextField txtAluno;
@@ -41,7 +42,7 @@ public class JogarController {
 		if (validaCadastroJogo()) {
 			Jogar j = tela4jogar();
 			jogarDao.inserirJogo(j);
-			int qtQuestoes = questaoDao.buscaQuantidadeDeQuestoes(j.getCdMateria());
+			int qtQuestoes = questaoDao.buscaQuantidadeDeQuestoes(j.getMateria().getCdMateria());
 			if (qtQuestoes > 0) {
 				Parent telaParent = FXMLLoader.load(getClass().getResource("JogarResposta.fxml"));
 				Scene telaScene = new Scene(telaParent);
@@ -60,7 +61,7 @@ public class JogarController {
 	
 	private Jogar tela4jogar() {
 		jogar.setNmAluno(txtAluno.getText());
-		jogar.setCdMateria(cbMateria.getSelectionModel().getSelectedItem().getCdMateria());
+		jogar.setMateria(cbMateria.getSelectionModel().getSelectedItem());
 		return jogar;
 	}
 	

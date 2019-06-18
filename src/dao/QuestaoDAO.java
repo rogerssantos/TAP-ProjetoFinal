@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import model.Questao;
 import util.ConexaoDb;
@@ -14,7 +13,7 @@ public class QuestaoDAO {
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ps.setString(1, q.getDescricaoQuestao());
-			ps.setInt(2, q.getCdMateria());
+			ps.setInt(2, q.getMateria().getCdMateria());
 			ps.setString(3, q.getTextoQuestao());
 			ps.setString(4, q.getFlAtivo());
 			ps.executeUpdate();
@@ -57,7 +56,8 @@ public class QuestaoDAO {
 	
 	public Questao[] listaQuestoes() {
 		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbquestao where flativo = 'S' order by random () limit 5";
-		Questao[] questoes = new Questao[5];
+		Questao[] questoes = new Questao[3];
+		MateriaDAO materiaDao = new MateriaDAO();
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
 			ResultSet linha = ps.executeQuery();
@@ -67,7 +67,7 @@ public class QuestaoDAO {
 				q.setIdQuestao(linha.getInt("cdquestao"));
 				q.setDescricaoQuestao(linha.getString("dsquestao"));
 				q.setTextoQuestao(linha.getString("texto"));
-				q.setCdMateria(linha.getInt("cdmateria"));
+				q.setMateria(materiaDao.buscarPorId(linha.getInt("cdmateria")));
 				q.setFlAtivo(linha.getString("flativo"));
 				questoes[count] = q;
 				count++;
