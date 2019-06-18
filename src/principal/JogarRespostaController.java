@@ -73,23 +73,24 @@ public class JogarRespostaController {
 				bloqueiaResposta();
 				jogarDao.atualizaPontuacao(cdAlunoAcerto);
 			}
-			if (rdAlternativaB.isSelected() && resposta.getFlRepostaCertaB().equals("S")) {
+			else if (rdAlternativaB.isSelected() && resposta.getFlRepostaCertaB().equals("S")) {
 				lbResposta.setText("Parabéns você acertou!");
 				bloqueiaResposta();
 				jogarDao.atualizaPontuacao(cdAlunoAcerto);
 			}
-			if (rdAlternativaC.isSelected() && resposta.getFlRepostaCertaC().equals("S")) {
+			else if (rdAlternativaC.isSelected() && resposta.getFlRepostaCertaC().equals("S")) {
 				lbResposta.setText("Parabéns você acertou!");
 				bloqueiaResposta();
 				jogarDao.atualizaPontuacao(cdAlunoAcerto);
 			}
-			if (rdAlternativaD.isSelected() && resposta.getFlRepostaCertaD().equals("S")) {
+			else if (rdAlternativaD.isSelected() && resposta.getFlRepostaCertaD().equals("S")) {
 				lbResposta.setText("Parabéns você acertou!");
 				bloqueiaResposta();
 				jogarDao.atualizaPontuacao(cdAlunoAcerto);
+			} else {
+				lbResposta.setText("Infelizmente você errou :(");
+				bloqueiaResposta();
 			}
-			lbResposta.setText("Infelizmente você errou :(");
-			bloqueiaResposta();
 		}
 	}
 	
