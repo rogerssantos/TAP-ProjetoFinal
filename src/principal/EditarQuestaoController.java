@@ -40,3 +40,9 @@ public class EditarQuestaoController {
 		if (cbMateria.getSelectionModel().isEmpty()) {
 			cbMateria.getSelectionModel().select(+1);
 			questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		}else {
+			questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		}
+		return questao;
+	}
+}
