@@ -42,7 +42,7 @@ public class JogarRespostaController {
 	private QuestaoDAO questaoDao = new QuestaoDAO();
 	private JogarDAO jogarDao = new JogarDAO();
 	private RespostaDAO respostaDao = new RespostaDAO();
-	private Questao[] questaoArray = new Questao[3];
+	private Questao[] questaoArray = new Questao[5];
 	private Resposta resposta = new Resposta();
 	ArrayList<Questao> questoes = new ArrayList<Questao>();
 	int countQuestao = 0;

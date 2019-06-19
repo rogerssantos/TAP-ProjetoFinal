@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import model.Questao;
 import util.ConexaoDb;
@@ -56,7 +57,7 @@ public class QuestaoDAO {
 	
 	public Questao[] listaQuestoes() {
 		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbquestao where flativo = 'S' order by random () limit 5";
-		Questao[] questoes = new Questao[3];
+		Questao[] questoes = new Questao[5];
 		MateriaDAO materiaDao = new MateriaDAO();
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
@@ -71,6 +72,29 @@ public class QuestaoDAO {
 				q.setFlAtivo(linha.getString("flativo"));
 				questoes[count] = q;
 				count++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return questoes;
+	}
+	
+	public ArrayList<Questao> filtraQuestoesPorMateria(int filtro){
+		ArrayList<Questao> questoes = new ArrayList<Questao>();
+		MateriaDAO materiaDao = new MateriaDAO();
+		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbquestao where flativo = 'S' and cdmateria = ?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, filtro);
+			ResultSet linha = ps.executeQuery();
+			while(linha.next()) {
+				Questao q =new Questao();
+				q.setIdQuestao(linha.getInt("cdquestao"));
+				q.setDescricaoQuestao(linha.getString("dsquestao"));
+				q.setTextoQuestao(linha.getString("texto"));
+				q.setMateria(materiaDao.buscarPorId(linha.getInt("cdmateria")));
+				q.setFlAtivo(linha.getString("flativo"));
+				questoes.add(q);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

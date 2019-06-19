@@ -41,18 +41,29 @@ public class JogarController {
 	public void comecarJogo(ActionEvent event) throws IOException {
 		if (validaCadastroJogo()) {
 			Jogar j = tela4jogar();
-			jogarDao.inserirJogo(j);
-			int qtQuestoes = questaoDao.buscaQuantidadeDeQuestoes(j.getMateria().getCdMateria());
-			if (qtQuestoes > 0) {
-				Parent telaParent = FXMLLoader.load(getClass().getResource("JogarResposta.fxml"));
-				Scene telaScene = new Scene(telaParent);
-				Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				telaStage.setScene(telaScene);
-				telaStage.show();
-			} else {
-				mensagemErroValidacao("A materia selecionada não possui nenhuma questão cadastrada");
+			if (checaQuantidadeDePerguntas(j)) {
+				jogarDao.inserirJogo(j);
+				int qtQuestoes = questaoDao.buscaQuantidadeDeQuestoes(j.getMateria().getCdMateria());
+				if (qtQuestoes > 0) {
+					Parent telaParent = FXMLLoader.load(getClass().getResource("JogarResposta.fxml"));
+					Scene telaScene = new Scene(telaParent);
+					Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					telaStage.setScene(telaScene);
+					telaStage.show();
+				} else {
+					mensagemErroValidacao("A materia selecionada não possui nenhuma questão cadastrada");
+				}
 			}
 		}
+	}
+	
+	@FXML
+	public void voltarParaTelaInicial(ActionEvent event) throws IOException {
+		Parent telaParent = FXMLLoader.load(getClass().getResource("Principal.fxml"));
+		Scene telaScene = new Scene(telaParent);
+		Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		telaStage.setScene(telaScene);
+		telaStage.show();
 	}
 	
 	public void preencheComboBoxMateria() {
@@ -72,6 +83,15 @@ public class JogarController {
 		}
 		if(txtAluno.getText().equals("")) {
 			mensagemErroValidacao("Campo não preenchido: Nome");
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean checaQuantidadeDePerguntas(Jogar j) {
+		int qtdQuestao = questaoDao.buscaQuantidadeDeQuestoes(j.getMateria().getCdMateria());
+		if(qtdQuestao < 5) {
+			mensagemErroValidacao("A matéria selecionada não possui 5 questões");
 			return false;
 		}
 		return true;

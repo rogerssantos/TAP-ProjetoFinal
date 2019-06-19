@@ -1,10 +1,16 @@
 package principal;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.stage.Stage;
 
 public class PrincipalAdminController {
 	
@@ -18,6 +24,20 @@ public class PrincipalAdminController {
 	@FXML
 	public void abreCadQuestao() {
 		abreTab("CadQuestao", "CadQuestao.fxml");
+	}
+	
+	@FXML
+	public void abreEditarQuestao() {
+		abreTab("EditQuestao", "EditarQuestao.fxml");
+	}
+	
+	@FXML
+	public void voltarParaTelaInicial(ActionEvent event) throws IOException {
+		Parent telaParent = FXMLLoader.load(getClass().getResource("Principal.fxml"));
+		Scene telaScene = new Scene(telaParent);
+		Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		telaStage.setScene(telaScene);
+		telaStage.show();
 	}
 	
 	private void abreTab(String titulo, String path) {
