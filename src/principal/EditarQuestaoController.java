@@ -4,9 +4,13 @@ import dao.MateriaDAO;
 import dao.QuestaoDAO;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import model.Materia;
 import model.Questao;
 
@@ -19,14 +23,11 @@ public class EditarQuestaoController {
 	private MateriaDAO materiaDao = new MateriaDAO();
 	private QuestaoDAO questaoDao = new QuestaoDAO();
 	private Questao questao = new Questao();
-		
+	
+	@FXML
 	public void initialize() {
 		preencheComboBoxMateria();
 		filtraTabela();
-	}
-	
-	public void preencheComboBoxMateria() {
-		cbMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
 	}
 	
 	@FXML
@@ -36,9 +37,28 @@ public class EditarQuestaoController {
 		tbQuestao.setItems(FXCollections.observableArrayList(questaoDao.filtraQuestoesPorMateria(q.getMateria().getCdMateria())));
 	}
 	
+	@FXML
+	public void abreJanelaDeEdicaoDaQuestaoSelecionada() {
+		try {
+			Stage stageJanela = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("EditarQuestaoJanela.fxml"));
+			Parent root = loader.load();
+			//EditarQuestaoJanelaController controller = loader.getController();
+			stageJanela.setScene(new Scene(root));
+			stageJanela.initOwner(tbQuestao.getScene().getWindow());
+			stageJanela.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void preencheComboBoxMateria() {
+		cbMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
+	}
+	
 	private Questao tela4jogar() {
 		if (cbMateria.getSelectionModel().isEmpty()) {
-			cbMateria.getSelectionModel().select(+1);
+			cbMateria.getSelectionModel().select(0);
 			questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
 		}else {
 			questao.setMateria(cbMateria.getSelectionModel().getSelectedItem());
