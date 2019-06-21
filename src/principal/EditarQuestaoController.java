@@ -23,6 +23,7 @@ public class EditarQuestaoController {
 	private MateriaDAO materiaDao = new MateriaDAO();
 	private QuestaoDAO questaoDao = new QuestaoDAO();
 	private Questao questao = new Questao();
+	int idQuestao = 0;
 	
 	@FXML
 	public void initialize() {
@@ -39,11 +40,14 @@ public class EditarQuestaoController {
 	
 	@FXML
 	public void abreJanelaDeEdicaoDaQuestaoSelecionada() {
+		Questao q = tbQuestao.getSelectionModel().getSelectedItem();
+		idQuestao = q.getIdQuestao();
 		try {
 			Stage stageJanela = new Stage();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("EditarQuestaoJanela.fxml"));
 			Parent root = loader.load();
-			//EditarQuestaoJanelaController controller = loader.getController();
+			EditarQuestaoJanelaController controller = loader.getController();
+			controller.recebeInformacoesDaQuestaoSelecionada(q.getIdQuestao());
 			stageJanela.setScene(new Scene(root));
 			stageJanela.initOwner(tbQuestao.getScene().getWindow());
 			stageJanela.show();

@@ -101,4 +101,50 @@ public class QuestaoDAO {
 		}
 		return questoes;
 	}
+	
+	public Questao filtraQuestoesPorCdQuestao(int filtro){
+		Questao questoes = new Questao();
+		MateriaDAO materiaDao = new MateriaDAO();
+		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbquestao where flativo = 'S' and cdquestao = ?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, filtro);
+			ResultSet linha = ps.executeQuery();
+			while(linha.next()) {
+				questoes.setIdQuestao(linha.getInt("cdquestao"));
+				questoes.setDescricaoQuestao(linha.getString("dsquestao"));
+				questoes.setTextoQuestao(linha.getString("texto"));
+				questoes.setMateria(materiaDao.buscarPorId(linha.getInt("cdmateria")));
+				questoes.setFlAtivo(linha.getString("flativo"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return questoes;
+	}
+	
+
+	public void editarQuestao(Questao q) {
+		String sql = "update tbquestao set dsquestao = ?, texto = ? where cdquestao = ?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setString(1, q.getDescricaoQuestao());
+			ps.setString(2, q.getTextoQuestao());
+			ps.setInt(3, q.getIdQuestao());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void excluirQuestao(int idQuestao) {
+		String sql = "delete from tbquestao where cdquestao = ?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, idQuestao);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

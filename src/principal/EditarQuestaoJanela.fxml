@@ -9,6 +9,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.EditarQuestaoJanelaController">
@@ -30,7 +31,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtDescricaoQuestao">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -40,7 +41,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea prefHeight="311.0" prefWidth="484.0">
+                  <TextArea fx:id="txtQuestao" prefHeight="311.0" prefWidth="484.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -63,12 +64,6 @@
                </children>
             </VBox>
          </top>
-         <bottom>
-            <Button mnemonicParsing="false" text="Atualizar pergunta" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="10.0" />
-               </BorderPane.margin></Button>
-         </bottom>
          <right>
             <VBox BorderPane.alignment="CENTER">
                <children>
@@ -77,12 +72,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtAlternativaA">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta">
+                  <RadioButton fx:id="rdAlternativaA" mnemonicParsing="false" text="Correta">
                      <toggleGroup>
                         <ToggleGroup fx:id="resposta" />
                      </toggleGroup>
@@ -95,12 +90,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtAlternativaB">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta" toggleGroup="$resposta">
+                  <RadioButton fx:id="rdAlternativaB" mnemonicParsing="false" text="Correta" toggleGroup="$resposta">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -110,12 +105,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtAlternativaC">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta" toggleGroup="$resposta">
+                  <RadioButton fx:id="rdAlternativaC" mnemonicParsing="false" text="Correta" toggleGroup="$resposta">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -125,12 +120,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtAlternativaD">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <RadioButton mnemonicParsing="false" text="Correta" toggleGroup="$resposta">
+                  <RadioButton fx:id="rdAlternativaD" mnemonicParsing="false" text="Correta" toggleGroup="$resposta">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -138,6 +133,27 @@
                </children>
             </VBox>
          </right>
+         <bottom>
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#atualizaQuestaoResposta" text="Atualizar">
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#excluiRegistroQuestaoResposta" text="Excluir">
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnFechar" mnemonicParsing="false" onAction="#fechaJanela" text="Sair">
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

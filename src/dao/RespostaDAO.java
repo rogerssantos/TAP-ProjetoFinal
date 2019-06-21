@@ -54,4 +54,29 @@ public class RespostaDAO {
 		}
 		return r;
 	}
+	
+	public void editarResposta(int cdResposta, int cdQuestao, String texto, String flCorreto) {
+		String sql = "update tbresposta set texto = ?, flcorreto = ? where cdquestao = ? and cdresposta = ?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setString(1, texto);
+			ps.setString(2, flCorreto);
+			ps.setInt(3, cdQuestao);
+			ps.setInt(4, cdResposta);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void excluirQuestaoResposta(int idQuestao) {
+		String sql = "delete from tbresposta where cdquestao = ?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, idQuestao);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
