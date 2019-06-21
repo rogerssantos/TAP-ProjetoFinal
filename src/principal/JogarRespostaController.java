@@ -115,7 +115,7 @@ public class JogarRespostaController {
 			System.out.println("QUESTAO "+countQuestao);
 			System.out.println("ARRAY "+questaoArray.length);
 		} else{
-			Parent telaParent = FXMLLoader.load(getClass().getResource("RankingAcertadas.fxml"));
+			Parent telaParent = FXMLLoader.load(getClass().getResource("NotaDoAluno.fxml"));
 			Scene telaScene = new Scene(telaParent);
 			Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			telaStage.setScene(telaScene);

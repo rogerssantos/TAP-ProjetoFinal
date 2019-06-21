@@ -36,6 +36,37 @@ public class JogarDAO {
 		return idMaxAluno;
 	}
 	
+	public int buscaQtAcertadasDoMaxAluno(int aluno){
+		int qtAcertadas = 0;
+		String sql = "select qtacertadas from tbalunoacerto where cdalunoacerto=?";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, aluno);
+			ResultSet linha = ps.executeQuery();
+			if(linha.next()) {
+				qtAcertadas = (linha.getInt("qtacertadas"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return qtAcertadas;
+	}
+	
+	public int buscaMateriaJogar(int aluno){
+		int cdMateria = 0;
+		String sql = "select cdmateria from tbalunoacerto";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ResultSet linha = ps.executeQuery();
+			if(linha.next()) {
+				cdMateria = (linha.getInt("cdMateria"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cdMateria;
+	}
+	
 	public void atualizaPontuacao(int cdAlunoAcerto) {
 		String sql = "update tbalunoacerto set qtacertadas = qtacertadas + 1 where cdalunoacerto = ?";
 		try {

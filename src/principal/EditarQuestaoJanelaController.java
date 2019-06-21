@@ -3,11 +3,14 @@ package principal;
 import dao.QuestaoDAO;
 import dao.RespostaDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Questao;
 import model.Resposta;
 
@@ -49,10 +52,13 @@ public class EditarQuestaoJanelaController {
 	
 	@FXML
 	public void atualizaQuestaoResposta() {
-		Questao q = tela4questao();
-		Resposta r = tela4resposta();
-		questaoDao.editarQuestao(q);
-		editarRespostas(q, r);
+		if (validaCadastroQuestao()) {
+			Questao q = tela4questao();
+			Resposta r = tela4resposta();
+			questaoDao.editarQuestao(q);
+			editarRespostas(q, r);
+			fechaJanela();
+		}
 	}
 	
 	@FXML
@@ -92,6 +98,47 @@ public class EditarQuestaoJanelaController {
 		resposta.setFlRepostaCertaC(rdAlternativaC.isSelected() ? "S" : "N");
 		resposta.setFlRepostaCertaD(rdAlternativaD.isSelected() ? "S" : "N");
 		return resposta;
+	}
+	
+	private boolean validaCadastroQuestao() {
+		if(txtDescricaoQuestao.getText().equals("")) {
+			mensagemErroValidacao("Descrição da pergunta");
+			return false;
+		}
+		if(txtQuestao.getText().equals("")) {
+			mensagemErroValidacao("Texto da pergunta");
+			return false;
+		}
+		if(txtAlternativaA.getText().equals("")) {
+			mensagemErroValidacao("Alternativa A");
+			return false;
+		}
+		if(txtAlternativaB.getText().equals("")) {
+			mensagemErroValidacao("Alternativa B");
+			return false;
+		}
+		if(txtAlternativaC.getText().equals("")) {
+			mensagemErroValidacao("Alternativa C");
+			return false;
+		}
+		if(txtAlternativaD.getText().equals("")) {
+			mensagemErroValidacao("Alternativa D");
+			return false;
+		}
+		if (!(rdAlternativaA.isSelected() || rdAlternativaB.isSelected() || rdAlternativaC.isSelected() || rdAlternativaD.isSelected())) {
+			mensagemErroValidacao("Resposta correta não selecionada");
+			return false;
+		}
+		return true;
+	}
+	
+	private void mensagemErroValidacao(String erro) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setHeaderText("Erro de validacao");
+		alert.setContentText("Erro de validacao no campo: " +erro+"\nPreenchimento obrigatorio");
+		alert.initStyle(StageStyle.UNDECORATED);
+		alert.getDialogPane().setStyle("-fx-border-color: black; -fx-border-width: 3;");
+		alert.show();
 	}
 	
 }
