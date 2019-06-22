@@ -52,11 +52,12 @@ public class JogarDAO {
 		return qtAcertadas;
 	}
 	
-	public int buscaMateriaJogar(int aluno){
+	public int buscaMateriaJogar(int cdAluno){
 		int cdMateria = 0;
-		String sql = "select cdmateria from tbalunoacerto";
+		String sql = "select cdmateria from tbalunoacerto where cdalunoacerto = ?";
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, cdAluno);
 			ResultSet linha = ps.executeQuery();
 			if(linha.next()) {
 				cdMateria = (linha.getInt("cdMateria"));

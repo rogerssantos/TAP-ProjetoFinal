@@ -38,12 +38,12 @@ public class QuestaoDAO {
 		return idQuestao;
 	}
 	
-	public int buscaQuantidadeDeQuestoes(int cdmateria) {
+	public int buscaQuantidadeDeQuestoes(int cdMateria) {
 		int qtQuestoes = 0;
 		String sql = "select count(*) as quantidade from tbquestao where cdmateria = ? and flativo = ?";
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
-			ps.setInt(1, cdmateria);
+			ps.setInt(1, cdMateria);
 			ps.setString(2, "S");
 			ResultSet linha = ps.executeQuery();
 			if(linha.next()) {
@@ -55,12 +55,13 @@ public class QuestaoDAO {
 		return qtQuestoes;
 	}
 	
-	public Questao[] listaQuestoes() {
-		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbquestao where flativo = 'S' order by random () limit 5";
+	public Questao[] listaQuestoes(int cdMateria) {
+		String sql = "select cdquestao, dsquestao, texto, cdmateria, flativo from tbquestao where flativo = 'S' and cdmateria = ? order by random () limit 5";
 		Questao[] questoes = new Questao[5];
 		MateriaDAO materiaDao = new MateriaDAO();
 		try {
 			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, cdMateria);
 			ResultSet linha = ps.executeQuery();
 			int count = 0;
 			while (linha.next()) {

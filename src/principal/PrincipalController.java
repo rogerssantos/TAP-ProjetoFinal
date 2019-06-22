@@ -47,4 +47,14 @@ public class PrincipalController {
 		telaStage.setScene(telaScene);
 		telaStage.show();
 	}
+	
+	@FXML
+	public void telaDeRanking(ActionEvent event) throws IOException {
+		Parent telaParent = FXMLLoader.load(getClass().getResource("RankingAcertadas.fxml"));
+		Scene telaScene = new Scene(telaParent);
+		Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		telaStage.setScene(telaScene);
+		telaStage.show();
+	}
+	
 }

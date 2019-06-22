@@ -47,20 +47,23 @@ public class JogarRespostaController {
 	ArrayList<Questao> questoes = new ArrayList<Questao>();
 	int countQuestao = 0;
 	int cdAlunoAcerto;
+	int cdMateria;
 	
 	public void initialize() {
 		cdAlunoAcerto = jogarDao.buscaMaxAluno();
+		cdMateria = jogarDao.buscaMateriaJogar(cdAlunoAcerto);
 		preencheTela();
+		txtQuestao.setWrapText(true);
+		txtQuestao.setEditable(false);
 	}
 	
 	public void preencheTela() {
 		if (countQuestao != questaoArray.length) {
 			if (countQuestao == 0) {
-				questaoArray = questaoDao.listaQuestoes();
+				questaoArray = questaoDao.listaQuestoes(cdMateria);
 			}
-			System.out.println(countQuestao);
-			resposta = respostaDao.listaRespostas(questaoArray[countQuestao].getIdQuestao());
 			txtQuestao.setText(questaoArray[countQuestao].getTextoQuestao());
+			resposta = respostaDao.listaRespostas(questaoArray[countQuestao].getIdQuestao());
 			lbDescQuestao.setText(questaoArray[countQuestao].getDescricaoQuestao());
 			lbAlternativaA.setText(resposta.getAlteranativaA());
 			lbAlternativaB.setText(resposta.getAlteranativaB());
@@ -112,8 +115,6 @@ public class JogarRespostaController {
 		if (countQuestao < questaoArray.length) {
 			preencheTela();
 			lbResposta.setText("");
-			System.out.println("QUESTAO "+countQuestao);
-			System.out.println("ARRAY "+questaoArray.length);
 		} else{
 			Parent telaParent = FXMLLoader.load(getClass().getResource("NotaDoAluno.fxml"));
 			Scene telaScene = new Scene(telaParent);
