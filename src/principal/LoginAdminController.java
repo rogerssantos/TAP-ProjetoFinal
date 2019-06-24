@@ -37,7 +37,7 @@ public class LoginAdminController {
 	
 	@FXML
 	public void abreTelaPrincipalAdmin(ActionEvent event) throws IOException {
-		if (txtSenha.getText().equals("a")){
+		if (txtSenha.getText().equals("admin123")){
 			Parent telaParent = FXMLLoader.load(getClass().getResource("PrincipalAdmin.fxml"));
 			Scene telaScene = new Scene(telaParent);
 			Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
