@@ -61,11 +61,16 @@ public class PrincipalController {
 	
 	@FXML
 	public void telaDeRanking(ActionEvent event) throws IOException {
-		Parent telaParent = FXMLLoader.load(getClass().getResource("RankingAcertadas.fxml"));
-		Scene telaScene = new Scene(telaParent);
-		Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		telaStage.setScene(telaScene);
-		telaStage.show();
+		int qtMaterias = materiaDao.quantidadeMateria();
+		if (qtMaterias > 0) {
+			Parent telaParent = FXMLLoader.load(getClass().getResource("RankingAcertadas.fxml"));
+			Scene telaScene = new Scene(telaParent);
+			Stage telaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			telaStage.setScene(telaScene);
+			telaStage.show();
+		} else {
+			mensagemErroValidacao("Nenhuma matéria foi cadastrada, por favor cadastre para habilitar essa tela");
+		}
 	}
 	
 	private void mensagemErroValidacao(String erro) {
