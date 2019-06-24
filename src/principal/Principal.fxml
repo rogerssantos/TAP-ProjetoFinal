@@ -8,34 +8,53 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="apRoot" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.PrincipalController">
+<AnchorPane fx:id="apRoot" prefHeight="377.0" prefWidth="301.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.PrincipalController">
    <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <ImageView fitHeight="159.0" fitWidth="319.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@../../img/escola.png" />
-               </image>
-            </ImageView>
-         </top>
+      <BorderPane style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btJogar" mnemonicParsing="false" onAction="#telaDeJogar" text="Jogar" />
-                  <Button mnemonicParsing="false" onAction="#telaDeRanking" text="Ranking">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@../../imgs/interrogacao.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btJogar" alignment="CENTER" mnemonicParsing="false" onAction="#telaDeJogar" style="-fx-background-color: #FDFEFE;" text="Jogar" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></Button>
+                  <Button mnemonicParsing="false" onAction="#telaDeRanking" style="-fx-background-color: #FDFEFE;" text="Ranking">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </Button>
-                  <Button fx:id="btConfiguracoes" mnemonicParsing="false" onAction="#telaDeConfiguracoes" text="Configurações">
+                  <Button fx:id="btConfiguracoes" mnemonicParsing="false" onAction="#telaDeConfiguracoes" style="-fx-background-color: #FDFEFE;" text="Configurações">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </Button>
-                  <Button fx:id="btSair" mnemonicParsing="false" onAction="#botaoSair" text="Sair">
+                  <Button fx:id="btSair" mnemonicParsing="false" onAction="#botaoSair" style="-fx-background-color: #FDFEFE;" text="Sair">
                      <VBox.margin>
-                        <Insets bottom="10.0" top="20.0" />
+                        <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </Button>
                </children>
             </VBox>

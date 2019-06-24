@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.Materia;
 import model.Questao;
@@ -50,6 +51,8 @@ public class EditarQuestaoController {
 			controller.recebeInformacoesDaQuestaoSelecionada(q.getIdQuestao());
 			stageJanela.setScene(new Scene(root));
 			stageJanela.initOwner(tbQuestao.getScene().getWindow());
+			stageJanela.setTitle("Perguntas e Respostas");
+			stageJanela.getIcons().add(new Image("img/icon.png"));
 			stageJanela.show();
 		} catch (Exception e) {
 			e.printStackTrace();

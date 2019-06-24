@@ -22,7 +22,7 @@ public class PrincipalController {
 	@FXML Button btSair;
 	
 	public void initialize(URL url, ResourceBundle rb) {
-		
+	
 	}
 	
 	@FXML

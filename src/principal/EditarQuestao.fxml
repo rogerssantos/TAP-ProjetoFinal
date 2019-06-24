@@ -9,10 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="583.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.EditarQuestaoController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
@@ -20,6 +21,9 @@
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
                   <HBox alignment="CENTER">
                      <children>
@@ -27,8 +31,11 @@
                            <HBox.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <ComboBox fx:id="cbMateria" onAction="#filtraTabela" prefHeight="31.0" prefWidth="294.0">
+                        <ComboBox fx:id="cbMateria" onAction="#filtraTabela" prefHeight="31.0" prefWidth="294.0" style="-fx-background-color: #FDFEFE;">
                            <HBox.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </HBox.margin>
@@ -39,7 +46,7 @@
             </VBox>
          </top>
          <center>
-            <TableView fx:id="tbQuestao" onMouseClicked="#abreJanelaDeEdicaoDaQuestaoSelecionada" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tbQuestao" onMouseClicked="#abreJanelaDeEdicaoDaQuestaoSelecionada" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="colDescricao" prefWidth="809.0" text="Descrição da Pergunta" />
               </columns>

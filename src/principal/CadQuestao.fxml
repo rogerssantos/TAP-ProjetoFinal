@@ -11,27 +11,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.CadQuestaoController">
    <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Adicionar Imagem:">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin></Label>
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="149.0" text="Escolher Imagem">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin></Button>
                   <Label text="Descrição da Pergunta:">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
-                  <TextField fx:id="txtDescricaoQuestao">
+                  <TextField fx:id="txtDescricaoQuestao" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -40,8 +36,11 @@
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
-                  <TextArea fx:id="txtQuestao" prefHeight="311.0" prefWidth="484.0">
+                  <TextArea fx:id="txtQuestao" prefHeight="311.0" prefWidth="484.0" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -55,12 +54,18 @@
                   <Label text="Cadastro de perguntas">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <Label text="Matérias:">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></Label>
-                  <ComboBox fx:id="cbMateria" prefHeight="6.0" prefWidth="158.0">
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <ComboBox fx:id="cbMateria" prefHeight="6.0" prefWidth="158.0" style="-fx-background-color: #FDFEFE;">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></ComboBox>
@@ -68,20 +73,23 @@
             </VBox>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" onAction="#inserirQuestao" text="Cadastrar Pergunta" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#inserirQuestao" style="-fx-background-color: #FDFEFE;" text="Cadastrar Pergunta" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" />
                </BorderPane.margin></Button>
          </bottom>
          <right>
-            <VBox BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Alternativa A">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
-                  <TextField fx:id="txtAlternativaA">
+                  <TextField fx:id="txtAlternativaA" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -93,13 +101,19 @@
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </RadioButton>
                   <Label text="Alternativa B">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
-                  <TextField fx:id="txtAlternativaB">
+                  <TextField fx:id="txtAlternativaB" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -108,13 +122,19 @@
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </RadioButton>
                   <Label text="Alternativa C">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
-                  <TextField fx:id="txtAlternativaC">
+                  <TextField fx:id="txtAlternativaC" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -123,13 +143,19 @@
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </RadioButton>
                   <Label text="Alternativa D">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
-                  <TextField fx:id="txtAlternativaD">
+                  <TextField fx:id="txtAlternativaD" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -138,6 +164,9 @@
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </RadioButton>
                </children>
             </VBox>

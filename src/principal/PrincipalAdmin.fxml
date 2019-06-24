@@ -9,11 +9,11 @@
 
 <AnchorPane prefHeight="761.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.PrincipalAdminController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="200.0" prefWidth="986.0" style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox alignment="CENTER" prefHeight="761.0" prefWidth="136.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#abreCadMateria" prefHeight="0.0" prefWidth="112.0" text="Matérias">
+                  <Button mnemonicParsing="false" onAction="#abreCadMateria" prefHeight="0.0" prefWidth="112.0" style="-fx-background-color: #FDFEFE;" text="Matérias">
                      <VBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </VBox.margin>
@@ -21,7 +21,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#abreCadQuestao" prefHeight="0.0" prefWidth="112.0" text="Perguntas">
+                  <Button mnemonicParsing="false" onAction="#abreCadQuestao" prefHeight="0.0" prefWidth="112.0" style="-fx-background-color: #FDFEFE;" text="Perguntas">
                      <VBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </VBox.margin>
@@ -29,7 +29,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </padding>
                   </Button>
-                  <Button layoutX="20.0" layoutY="366.0" mnemonicParsing="false" onAction="#abreEditarQuestao" prefHeight="0.0" prefWidth="112.0" text="Editar Perguntas">
+                  <Button layoutX="20.0" layoutY="366.0" mnemonicParsing="false" onAction="#abreEditarQuestao" prefHeight="0.0" prefWidth="112.0" style="-fx-background-color: #FDFEFE;" text="Editar Perguntas">
                      <padding>
                         <Insets bottom="20.0" top="20.0" />
                      </padding>
@@ -37,7 +37,7 @@
                         <Insets left="10.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button layoutX="20.0" layoutY="401.0" mnemonicParsing="false" onAction="#voltarParaTelaInicial" prefHeight="0.0" prefWidth="112.0" text="Voltar">
+                  <Button layoutX="20.0" layoutY="401.0" mnemonicParsing="false" onAction="#voltarParaTelaInicial" prefHeight="0.0" prefWidth="112.0" style="-fx-background-color: #FDFEFE;" text="Voltar">
                      <padding>
                         <Insets bottom="20.0" top="20.0" />
                      </padding>

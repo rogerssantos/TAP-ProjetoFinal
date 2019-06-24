@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="471.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.CadMateriaController">
    <children>
-      <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" text="Cadastro de Materias">
                <VBox.margin>
@@ -26,7 +26,7 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <TextField fx:id="txtNome">
+                  <TextField fx:id="txtNome" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></TextField>
@@ -44,8 +44,8 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
-                  <Button fx:id="btAcao" mnemonicParsing="false" onAction="#inserirAtualizarMateria" text="Novo" />
-                  <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelarLinhaSelecionada" text="Cancelar">
+                  <Button fx:id="btAcao" mnemonicParsing="false" onAction="#inserirAtualizarMateria" style="-fx-background-color: #FDFEFE;" text="Novo" />
+                  <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelarLinhaSelecionada" style="-fx-background-color: #FDFEFE;" text="Cancelar">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -55,9 +55,9 @@
             <HBox alignment="CENTER">
                <children>
                   <Label text="Filtro:" />
-                  <TextField fx:id="txtFiltro" onKeyReleased="#filtrarMateria">
+                  <TextField fx:id="txtFiltro" onKeyReleased="#filtrarMateria" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets bottom="10.0" left="10.0" />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -65,12 +65,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                </padding>
             </HBox>
-            <TableView fx:id="tblMateria" onMouseClicked="#selecionaRegistroMateria">
+            <TableView fx:id="tblMateria" onMouseClicked="#selecionaRegistroMateria" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
               <columns>
                 <TableColumn fx:id="colNmMateria" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="433.0" text="Matérias" />
               </columns>
             </TableView>
-            <Button mnemonicParsing="false" onAction="#loadInicio" text="Voltar">
+            <Button mnemonicParsing="false" onAction="#loadInicio" style="-fx-background-color: #FDFEFE;" text="Voltar">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin></Button>

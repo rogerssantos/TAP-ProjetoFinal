@@ -10,10 +10,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="apJogar" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.RankingAcertadasController">
    <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane style="-fx-background-color: #3498DB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
@@ -21,6 +22,9 @@
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Label>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="245.0">
                      <children>
@@ -28,17 +32,20 @@
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <ComboBox fx:id="cbMateria" onAction="#filtrarTabela" prefWidth="150.0">
+                        <ComboBox fx:id="cbMateria" onAction="#filtrarTabela" prefWidth="150.0" style="-fx-background-color: #FDFEFE;">
                            <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </ComboBox>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <TableView fx:id="tblRankingAcertadas">
+                        <TableView fx:id="tblRankingAcertadas" style="-fx-background-color: #FDFEFE; -fx-border-color: #283747;">
                           <columns>
                             <TableColumn fx:id="colNmAluno" prefWidth="172.0" text="Jogador" />
                             <TableColumn fx:id="colQtAcertadas" minWidth="0.0" prefWidth="133.0" text="Pontuação" />
@@ -48,7 +55,7 @@
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#voltarParaTelaInicial" text="Voltar">
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#voltarParaTelaInicial" style="-fx-background-color: #FDFEFE;" text="Voltar">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
