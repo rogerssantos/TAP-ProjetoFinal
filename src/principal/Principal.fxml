@@ -27,11 +27,6 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btNotas" mnemonicParsing="false" text="Notas">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Button>
                   <Button fx:id="btConfiguracoes" mnemonicParsing="false" onAction="#telaDeConfiguracoes" text="Configurações">
                      <VBox.margin>
                         <Insets top="20.0" />

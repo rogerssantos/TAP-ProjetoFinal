@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import model.Jogar;
 import util.ConexaoDb;
@@ -77,6 +78,25 @@ public class JogarDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Jogar> buscaRankingPorMateria(int cdMateria) {
+		ArrayList<Jogar> jogos = new ArrayList<Jogar>();
+		String sql = "select nmaluno, qtacertadas from tbalunoacerto where cdmateria = ? order by qtacertadas desc limit 10";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ps.setInt(1, cdMateria);
+			ResultSet linha = ps.executeQuery();
+			while (linha.next()) {
+				Jogar j = new Jogar();
+				j.setNmAluno(linha.getString("nmaluno"));
+				j.setQtAcertadas((int) ((linha.getInt("qtacertadas")/5.0)*10.0));
+				jogos.add(j);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return jogos;
 	}
 	
 }

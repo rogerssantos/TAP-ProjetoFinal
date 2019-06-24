@@ -2,8 +2,8 @@ package principal;
 
 import java.io.IOException;
 
+import dao.JogarDAO;
 import dao.MateriaDAO;
-import dao.RankingAcertadasDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,25 +23,20 @@ public class RankingAcertadasController {
 	@FXML ComboBox<Materia> cbMateria;
 	@FXML TableView<Jogar> tblRankingAcertadas;
 	@FXML TableColumn<Jogar, String> colNmAluno;
-	@FXML TableColumn<Jogar, Integer> colQtAcertadas;
+	@FXML TableColumn<Jogar, Number> colQtAcertadas;
 	
 	private MateriaDAO materiaDao = new MateriaDAO();
-	private RankingAcertadasDAO rankingAcertadasDAO = new RankingAcertadasDAO();
+	private JogarDAO jogarDAO = new JogarDAO();
+	private Jogar jogar = new Jogar();
 	
 	@FXML
 	public void initialize() {
 		preencheComboBoxMateria();
-		cbMateria.getSelectionModel().selectFirst();
-		colNmAluno.setCellValueFactory(cellData -> cellData.getValue().nmAlunoProperty());
-		colQtAcertadas.setCellValueFactory(cellData -> cellData.getValue().qtAcertadasProperty().asObject());
-		tblRankingAcertadas.setItems(FXCollections.observableArrayList(rankingAcertadasDAO.buscaRankingPorMateria(cbMateria.getSelectionModel().getSelectedItem().getCdMateria())));
+		filtrarTabela();
 	}
 	
 	public void preencheComboBoxMateria() {
 		cbMateria.setItems(FXCollections.observableArrayList(materiaDao.listaMaterias()));
-	}
-	
-	public void jogar4Tela() {
 	}
 	
 	@FXML
@@ -54,10 +49,21 @@ public class RankingAcertadasController {
 	}
 	
 	@FXML
-	private void changeComboBox(ActionEvent event) {
+	private void filtrarTabela() {
+		Jogar j = tela4ranking();
 		colNmAluno.setCellValueFactory(cellData -> cellData.getValue().nmAlunoProperty());
-		colQtAcertadas.setCellValueFactory(cellData -> cellData.getValue().qtAcertadasProperty().asObject());
-	    tblRankingAcertadas.setItems(FXCollections.observableArrayList(rankingAcertadasDAO.buscaRankingPorMateria(cbMateria.getValue().getCdMateria())));
+		colQtAcertadas.setCellValueFactory(cellData -> cellData.getValue().qtAcertadasProperty());
+		tblRankingAcertadas.setItems(FXCollections.observableArrayList(jogarDAO.buscaRankingPorMateria(j.getMateria().getCdMateria())));
+	}
+	
+	private Jogar tela4ranking() {
+		if (cbMateria.getSelectionModel().isEmpty()) {
+			cbMateria.getSelectionModel().select(0);
+			jogar.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		}else {
+			jogar.setMateria(cbMateria.getSelectionModel().getSelectedItem());
+		}
+		return jogar;
 	}
 
 }
