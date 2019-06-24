@@ -79,4 +79,19 @@ public class RespostaDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public int quantidadeRespostas(){
+		int qtRespostas = 0;
+		String sql = "select count(*) as quantidade from tbresposta";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ResultSet linha = ps.executeQuery();
+			if (linha.next()) {
+				qtRespostas = linha.getInt("quantidade");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return qtRespostas;
+	}
 }

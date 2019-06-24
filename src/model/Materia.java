@@ -13,7 +13,7 @@ public class Materia {
 
 	@Override
 	public String toString() {
-		return getCdMateria()+" - "+getNmMateria();
+		return getNmMateria();
 	}
 
 	public final IntegerProperty cdMateriaProperty() {

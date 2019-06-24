@@ -89,4 +89,19 @@ public class MateriaDAO {
 		}
 		return m;
 	}
+	
+	public int quantidadeMateria(){
+		int qtMateria = 0;
+		String sql = "select count(*) as quantidade from tbmateria where flativo = 'S'";
+		try {
+			PreparedStatement ps = ConexaoDb.getInstance().prepareStatement(sql);
+			ResultSet linha = ps.executeQuery();
+			if (linha.next()) {
+				qtMateria = linha.getInt("quantidade");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return qtMateria;
+	}
 }
