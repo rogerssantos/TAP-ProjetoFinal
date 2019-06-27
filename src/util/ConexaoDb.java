@@ -11,10 +11,10 @@ public class ConexaoDb {
 	private static Connection conectaBd(){
 		Connection conn = null;
 		try{
-			File f = new File("bd/projeto_final.sqlite");
+			File f = new File("bd\\projeto_final.sqlite");
 			if(f.exists()) {
 				Class.forName("org.sqlite.JDBC");
-				conn = DriverManager.getConnection("jdbc:sqlite:bd/projeto_final.sqlite");
+				conn = DriverManager.getConnection("jdbc:sqlite:bd\\projeto_final.sqlite");
 			}
 		}catch(Exception e){
 			e.printStackTrace();

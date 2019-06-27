@@ -19,7 +19,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                      <image>
-                        <Image url="@../../imgs/interrogacao.png" />
+                        <Image url="@../img/interrogacao.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="btJogar" alignment="CENTER" mnemonicParsing="false" onAction="#telaDeJogar" style="-fx-background-color: #FDFEFE;" text="Jogar" textAlignment="CENTER">
